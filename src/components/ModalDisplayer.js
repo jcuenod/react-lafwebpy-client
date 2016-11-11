@@ -2,8 +2,7 @@ import React from 'react'
 import {render} from 'react-dom'
 
 import Modal from './Modals/Modal'
-import TabulatedResults from './Modals/TabulatedResults'
-import CollocationResults from './Modals/CollocationResults'
+import SearchResultsDisplayer from './Modals/SearchResultsDisplayer'
 import BookSelector from './Modals/BookSelector'
 import ChapterSelector from './Modals/ChapterSelector'
 
@@ -22,14 +21,7 @@ class ModalDisplayer extends React.Component {
 	render() {
 		return (
 			<div>
-				<Modal isVisible={this.state.searchResults.length > 0}
-					onClickHandler={this.clearResults}>
-					<TabulatedResults data={this.state.searchResults} />
-				</Modal>
-
-				<Modal isVisible={this.state.collocationResults.length > 0}>
-					<CollocationResults data={this.state.collocationResults} />
-				</Modal>
+				<SearchResultsDisplayer />
 
 				<Modal isVisible={this.state.bookSelectionMode}
 					onClickHandler={() => this.changeMode("bookSelectionMode", false)}>

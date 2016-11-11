@@ -2,32 +2,10 @@ import React from 'react'
 import AbstractSelector from './AbstractSelector'
 
 class TabulatedResults extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			terms: [],
-			settings: {
-				search_range: "clause",
-				search_type: "normal"
-			}
-		}
-	}
-	componentDidMount() {
-		EventPropagator.registerListener({
-			eventType: "do_search",
-			callback: (payload) => {
-				var new_terms = this.state.terms.slice()
-				var term_to_push = payload.term
-				term_to_push.id = new Date().valueOf()
-				new_terms.push(term_to_push)
-				this.setState({"terms": new_terms})
-			}
-		})
-	}
 	render() {
 		return (
 			<div>
-				<div className="results_tally">{this.state.data.length} results</div>
+				<div className="results_tally">{this.props.data.length} results</div>
 				<table className="results_table">
 					<tbody>
 						{this.props.data.map((row, i) => {

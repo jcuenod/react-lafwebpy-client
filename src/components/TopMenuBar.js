@@ -41,13 +41,6 @@ class TopMenuBar extends React.Component {
 				new_state[payload.setting_type] = payload.value
 				this.setState({"settings": new_state})
 			}
-		}, {
-			eventType: "do_search",
-			callback: (payload) => {
-				var new_state = Object.assign({}, this.state.settings)
-				new_state[payload.setting_type] = payload.value
-				this.setState({"settings": new_state})
-			}
 		}])
 	}
 	fireSearchEvent() {
