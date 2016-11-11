@@ -2,28 +2,23 @@ import React from 'react'
 
 class CollocationResults extends React.Component {
 	render() {
-		var the_list = this.props.list || []
-		var columns = Math.round(Math.sqrt(the_list.length));
-		var grid = the_list.reduce((previousValue, currentValue, i) => {
-			var returnValue = previousValue;
-			if (i % columns === 0)
-				returnValue.push([]);
-			returnValue[returnValue.length-1].push(currentValue);
-			return returnValue;
-		}, []);
 		return (
-			<div className="abstract_selector">
-				{grid.map((item, i) => {
-					return (
-						<div key={i} className="table_row">
-							{item.map((item_i, j) => {
-								return <div key={j} className="table_cell" onClick={() => this.props.onSelection(item_i)}>{item_i}</div>
-							}, this)}
-						</div>
-					)
-				}, this)}
+			<div>
+				<div className="results_tally">{this.props.data.length} collocations</div>
+				<table className="results_table collocation_table">
+					<tbody>
+						{this.props.data.map(function(row, i){
+							return (
+								<tr key={i}>
+									<td className="hebrew">{row.lexeme}</td>
+									<td className="reference">{row.count}</td>
+								</tr>
+							)
+						}, this)}
+					</tbody>
+				</table>
 			</div>
-		);
+		)
 	}
 }
 export default CollocationResults

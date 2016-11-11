@@ -10,6 +10,7 @@ class TopMenuBar extends React.Component {
 		super(props)
 		this.state = {
 			terms: [],
+			search_in_progress: false,
 			settings: {
 				search_range: "clause",
 				search_type: "normal"
@@ -41,9 +42,40 @@ class TopMenuBar extends React.Component {
 				new_state[payload.setting_type] = payload.value
 				this.setState({"settings": new_state})
 			}
+		}, {
+			eventType: "navigation_request",
+			callback: (payload) => {
+				this.setState({navigate_in_progress: true})
+			}
+		}, {
+			eventType: "navigation_complete",
+			callback: (payload) => {
+				this.setState({navigate_in_progress: false})
+			}
+		}, {
+			eventType: "do_search",
+			callback: () => {
+				this.setState({search_in_progress: true})
+			}
+		}, {
+			eventType: "do_collocation_search",
+			callback: () => {
+				this.setState({search_in_progress: true})
+			}
+		}, {
+			eventType: "do_search_done",
+			callback: () => {
+				this.setState({search_in_progress: false})
+			}
+		}, {
+			eventType: "do_collocation_search_done",
+			callback: () => {
+				this.setState({search_in_progress: false})
+			}
 		}])
 	}
 	fireSearchEvent() {
+		if (this.state.terms.length === 0) return
 		var dataToSend = {
 			"query": this.state.terms,
 			"search_range": this.state.settings.search_range
@@ -63,10 +95,17 @@ class TopMenuBar extends React.Component {
 		var searchTermElements = this.state.terms.map((term) => {
 			return <SearchTerm key={term.id} data={term} />
 		}, this)
+		var search_button_classes = ["do_search"]
+		if (this.state.search_in_progress)
+			search_button_classes.push("in-progress")
+
 		return (
-			<div className="search_builder">
+			<div className="search_builder" style={{
+					opacity: this.state.navigate_in_progress ? 0.4: 1,
+					pointerEvents: this.state.navigate_in_progress ? "none": "all"
+				}}>
 				{searchTermElements}
-				<div className="do_search" onClick={this.fireSearchEvent.bind(this)}>
+				<div className={search_button_classes.join(" ")} onClick={this.fireSearchEvent.bind(this)}>
 				</div>
 				<SearchSettings settings={this.state.settings} />
 				<BibleReference />

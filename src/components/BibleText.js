@@ -30,7 +30,7 @@ class BibleText extends React.Component {
 							reference: payload.reference
 						}
 					})
-				}, 1000)
+				}, 200)
 			}
 		})
 	}
@@ -53,10 +53,12 @@ class BibleText extends React.Component {
 			return toReturn
 		}, [[]]).filter((el) => el.length > 0)
 		return (
-			<div className="bible_text">
-				{words.map((word, i) => {
-					return <WholeWord key={i} word_bits={word} />
-				}, this)}
+			<div className="bible_text_container">
+				<div className="bible_text">
+					{words.map((word, i) => {
+						return <WholeWord key={i} word_bits={word} />
+					}, this)}
+				</div>
 			</div>
 		)
 	}

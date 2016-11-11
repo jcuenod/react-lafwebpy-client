@@ -182,9 +182,12 @@ class MorphDisplay extends React.Component {
 						}, this)}
 					</tbody>
 				</table>
-				<div style={{backgroundColor: this.state.data.reduce((p, c) => { return p |= c.selected }, false) ? "green" : "gray"}}
-						className="add_search_term"
-						onClick={this.addSearchTermClickHandler.bind(this)}>
+				<div style={{
+						backgroundColor: this.state.data.reduce((p, c) => { return p |= c.selected }, false) ? "green" : "gray",
+						display: this.state.data.length > 0 ? "block" : "none"
+					}}
+					className="add_search_term"
+					onClick={this.addSearchTermClickHandler.bind(this)}>
 					add search term
 				</div>
 			</div>

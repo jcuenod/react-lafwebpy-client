@@ -4,6 +4,7 @@
 body {
 	background-color: #fcfcfc;
 	font-family: "Carlito";
+	overflow: hidden;
 }
 body:after {
 	content: url('/images/ripple.svg') url('/images/search.svg') url('/images/gear.svg') url('/images/menu_arrow.svg');
@@ -75,6 +76,7 @@ body:after {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
+	transition: opacity 300ms ease;
 }
 .search_builder div {
 	flex: 0 1 auto;

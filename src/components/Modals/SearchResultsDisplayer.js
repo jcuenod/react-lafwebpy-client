@@ -23,20 +23,36 @@ class SearchResultsDisplayer extends React.Component {
 		}
 	}
 	componentDidMount() {
-		EventPropagator.registerListener({
+		EventPropagator.registerListener([{
 			eventType: "do_search",
 			callback: (payload) => {
 				// be sure to check that the search is legit
 				var results = resultsArray[currentResult++ % resultsArray.length]
-				this.setState({"normalResults": results})
-				this.setState({"show": "normal"})
+				//simulate ajax
+				setTimeout(() => {
+					this.setState({"normalResults": results})
+					this.setState({"show": "normal"})
+					EventPropagator.fireEvent({
+						eventType: "do_search_done",
+						payload: null
+					})
+				}, 200)
 			}
 		}, {
 			eventType: "do_collocation_search",
 			callback: (payload) => {
-				console.log("collocation search")
+				// be sure to check that the search is legit
+				//simulate ajax
+				setTimeout(() => {
+					this.setState({"collocationResults": [{"count": 26, "lexeme": "\u05e7\u05d3\u05dd["}, {"count": 14, "lexeme": "\u05d1"}, {"count": 8, "lexeme": "\u05d4"}, {"count": 7, "lexeme": "\u05d5"}, {"count": 4, "lexeme": "\u05dc\u05d0"}, {"count": 3, "lexeme": "\u05e4\u05e0\u05d4/"}, {"count": 3, "lexeme": "\u05d9\u05d5\u05dd/"}, {"count": 3, "lexeme": "\u05dc\u05d7\u05dd/"}, {"count": 2, "lexeme": "\u05de\u05d2\u05df/"}, {"count": 2, "lexeme": "\u05d7\u05e1\u05d3/"}, {"count": 2, "lexeme": "\u05e2\u05dc"}, {"count": 2, "lexeme": "\u05d0\u05ea"}, {"count": 2, "lexeme": "\u05de\u05d5\u05ea/"}, {"count": 2, "lexeme": "\u05d1\u05df/"}, {"count": 2, "lexeme": "\u05db\u05d9"}, {"count": 2, "lexeme": "\u05de\u05d5\u05e7\ufb2a/"}, {"count": 2, "lexeme": "\u05de\u05d9\u05dd/"}, {"count": 2, "lexeme": "\u05d0\u05d9\u05d3/"}, {"count": 1, "lexeme": "\u05e0\ufb2a\u05e3/"}, {"count": 1, "lexeme": "\u05ea\u05d5\u05d3\u05d4/"}, {"count": 1, "lexeme": "\u05e2\u05d9\u05df/"}, {"count": 1, "lexeme": "\u05ea\u05e4\u05dc\u05d4/"}, {"count": 1, "lexeme": "\u05de\u05d9"}, {"count": 1, "lexeme": "\u05d1\u05e8\u05da/"}, {"count": 1, "lexeme": "\u05d8\u05d5\u05d1/"}, {"count": 1, "lexeme": "\u05d1\u05e2\u05d3/"}, {"count": 1, "lexeme": "\u05d3\u05e8\u05da/"}, {"count": 1, "lexeme": "\u05d9\ufb2b\u05e8\u05d0\u05dc/"}, {"count": 1, "lexeme": "\u05d0\ufb2a\u05e8"}, {"count": 1, "lexeme": "\u05de\u05d4"}, {"count": 1, "lexeme": "\u05d1\u05e7\u05e8=/"}, {"count": 1, "lexeme": "\u05de\u05d3\u05d5\u05e2"}, {"count": 1, "lexeme": "\u05e8\u05d7\u05de\u05d9\u05dd/"}, {"count": 1, "lexeme": "\u05d1\u05e8\u05db\u05d4/"}, {"count": 1, "lexeme": "\u05e0\u05d3\u05d3["}, {"count": 1, "lexeme": "\u05d0\ufb2a\u05de\u05d5\u05e8\u05d4/"}, {"count": 1, "lexeme": "\u05e2\u05e0\u05d9=/"}, {"count": 1, "lexeme": "\ufb2a\u05e0\u05d4/"}, {"count": 1, "lexeme": "\u05e2\u05d2\u05dc/"}, {"count": 1, "lexeme": "\u05d4="}, {"count": 1, "lexeme": "\u05e8\u05e2\u05d4/"}, {"count": 1, "lexeme": "\u05db\u05df"}, {"count": 1, "lexeme": "\u05d9\u05d4\u05d5\u05d4/"}, {"count": 1, "lexeme": "\u05e2\u05dc\u05d4/"}, {"count": 1, "lexeme": "\u05d0\u05de\u05ea/"}, {"count": 1, "lexeme": "\u05d3\u05d1\u05e8/"}, {"count": 1, "lexeme": "\ufb2a\u05d9\u05e8["}, {"count": 1, "lexeme": "\u05d0\u05dc\u05d4\u05d9\u05dd/"}]})
+					this.setState({"show": "collocation"})
+					EventPropagator.fireEvent({
+						eventType: "do_collocation_search_done",
+						payload: null
+					})
+				}, 200)
 			}
-		})
+		}])
 	}
 	clearResults() {
 		this.setState({"show": "none"})
