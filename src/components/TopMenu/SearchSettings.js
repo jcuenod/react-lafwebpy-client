@@ -1,5 +1,4 @@
 import React from 'react'
-import EventPropagator from '../events/EventPropagator'
 
 import SearchSettingsMenu from './SearchSettingsMenu'
 

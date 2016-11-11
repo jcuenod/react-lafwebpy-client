@@ -1,5 +1,5 @@
 import React from 'react'
-import EventPropagator from '../events/EventPropagator'
+import EventPropagator from 'events/EventPropagator'
 
 var png_prop = {
 	"nu": {

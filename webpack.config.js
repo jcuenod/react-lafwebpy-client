@@ -21,5 +21,11 @@ module.exports = {
 				}
 			}
 		]
-	}
+	},
+
+	resolve: {
+		root: [
+			path.resolve('./src')
+		]
+	},
 };

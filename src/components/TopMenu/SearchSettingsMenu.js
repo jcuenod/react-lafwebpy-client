@@ -1,5 +1,4 @@
 import React from 'react'
-import EventPropagator from '../events/EventPropagator'
 
 import SettingsListItem from './SettingsListItem'
 
@@ -12,11 +11,21 @@ class SearchSettingsMenu extends React.Component {
 			<ul className="search_settings_menu">
 				<li className="heading">search range</li>
 				{search_ranges.map((value, i) => {
-					return <SettingsListItem key={i} isSelected={value == this.props.settings.search_range} value={value} onClickHandler={this.props.setSearchRange} />
+					return (
+						<SettingsListItem key={i}
+							isSelected={value == this.props.settings.search_range}
+							value={value}
+							setting_type="search_range" />
+					)
 				}, this)}
 				<li className="heading">search type</li>
 				{search_types.map((value, i) => {
-					return <SettingsListItem key={i} isSelected={value == this.props.settings.search_type} value={value} onClickHandler={this.props.setSearchType} />
+					return (
+						<SettingsListItem key={i}
+							isSelected={value == this.props.settings.search_type}
+							value={value}
+							setting_type="search_type" />
+					)
 				}, this)}
 			</ul>
 		)

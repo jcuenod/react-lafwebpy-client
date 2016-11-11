@@ -2,7 +2,6 @@ import React from 'react'
 import {render} from 'react-dom'
 
 import WordBit from './WordBit'
-import EventPropagator from '../events/EventPropagator'
 
 class WholeWord extends React.Component {
 	render() {
