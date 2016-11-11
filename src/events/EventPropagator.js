@@ -41,7 +41,7 @@ let EventPropagator = {
 		if (listenerList.length === 0) {
 			console.warn("No listeners are registered for eventObject:", eventObject)
 		} else {
-			console.info("Events fired to listeners:", listenerList.length)
+			console.info("Event (", eventObject.eventType, ") fired to listeners:", listenerList.length)
 		}
 	}
 }
