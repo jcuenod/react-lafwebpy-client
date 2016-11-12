@@ -131,7 +131,7 @@ class MorphDisplay extends React.Component {
 					})
 					this.setState({
 						"data": morph_data
-					});
+					})
 				})
 			}
 		})
@@ -142,7 +142,7 @@ class MorphDisplay extends React.Component {
 				previousValue[currentValue.k] = currentValue.v
 			return previousValue
 		}, {})
-		var morph_state = this.state.data.slice();
+		var morph_state = this.state.data.slice()
 		var new_morph_state = morph_state.map((m) => {
 			m.selected = false
 			return m
@@ -154,9 +154,9 @@ class MorphDisplay extends React.Component {
 		})
 	}
 	clickMorphData(key) {
-		var morph_state = this.state.data.slice();
-		var index = morph_state.map(function(m) {return m.k; }).indexOf(key);
-		morph_state[index].selected = !morph_state[index].selected;
+		var morph_state = this.state.data.slice()
+		var index = morph_state.map((m) => m.k).indexOf(key)
+		morph_state[index].selected = !morph_state[index].selected
 		this.setState({data: morph_state})
 	}
 	render() {

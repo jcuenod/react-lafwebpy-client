@@ -31,7 +31,7 @@ class TopMenuBar extends React.Component {
 			eventType: "remove_search_term",
 			callback: (payload) => {
 				var new_terms = this.state.terms.slice()
-				var index_to_remove = new_terms.map(function(o) { return o.id; }).indexOf(payload.id)
+				var index_to_remove = new_terms.map((o) => o.id).indexOf(payload.id)
 				new_terms.splice(index_to_remove, 1)
 				this.setState({"terms": new_terms})
 			}

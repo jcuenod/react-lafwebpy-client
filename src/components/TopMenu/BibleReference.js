@@ -19,7 +19,7 @@ class BibleReference extends React.Component {
 	}
 	moveChapter(direction) {
 		if (this.state.navigate_in_progress) return
-		var referenceArray = OTBookDetails.reduce(function(previousValue, currentValue){
+		var referenceArray = OTBookDetails.reduce((previousValue, currentValue) => {
 			var newReferences = [...Array(currentValue.chapters).keys()].map((i) => ({ "book": currentValue.name, "chapter": i+1}))
 			return previousValue.concat(newReferences)
 		},[])

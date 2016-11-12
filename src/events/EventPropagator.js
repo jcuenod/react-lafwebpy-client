@@ -6,15 +6,15 @@
 
  EventPropagator.registerListener({
  	"eventType": "test",
- 	"callback": function(payload){
- 		console.log(payload);
+ 	"callback": (payload) => {
+ 		console.log(payload.attr)
  	}
- });
+ })
 
  EventPropagator.fireEvent({
  	"eventType": "test",
- 	"payload": { "meh": function(){} }
- });
+ 	"payload": { "attr": "meh" }
+ })
 
  */
 
@@ -32,10 +32,8 @@ let EventPropagator = {
 			this.listeners.push(listenerObject)
 	},
 	fireEvent(eventObject){
-		let listenerList = this.listeners.filter(function(listener){
-			return listener.eventType === eventObject.eventType
-		})
-		listenerList.forEach(function(listener) {
+		let listenerList = this.listeners.filter((listener) => listener.eventType === eventObject.eventType)
+		listenerList.forEach((listener) => {
 			listener.callback(eventObject.payload)
 		})
 		if (listenerList.length === 0) {

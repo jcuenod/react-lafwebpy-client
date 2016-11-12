@@ -9,15 +9,14 @@ class TabulatedResults extends React.Component {
 				<table className="results_table">
 					<tbody>
 						{this.props.data.map((row, i) => {
-							// var h_text = row.hebrew.replace(row.clause, "<span class='highlight_clause'>" + row.clause + "</span>");
-							var url = row.passage.replace(/(.*)\ (\d+):\d+/, "/$1/$2");
+							var url = row.passage.replace(/(.*)\ (\d+):\d+/, "/$1/$2")
 							return (
 								<tr key={i}>
 									<td className="reference"><a href={url}>{row.passage}</a></td>
 									<td className="hebrew">{row.clause.map((words, i) => {
 											return (
 												<span key={i} className={words.significance}>{words.text}</span>
-											);
+											)
 										})}</td>
 									<td className="english" dangerouslySetInnerHTML={{__html: row.english}} />
 								</tr>

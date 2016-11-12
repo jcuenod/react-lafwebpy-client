@@ -3,14 +3,14 @@ import React from 'react'
 class AbstractSelector extends React.Component {
 	render() {
 		var the_list = this.props.list || []
-		var columns = Math.round(Math.sqrt(the_list.length));
+		var columns = Math.round(Math.sqrt(the_list.length))
 		var grid = the_list.reduce((previousValue, currentValue, i) => {
-			var returnValue = previousValue;
+			var returnValue = previousValue
 			if (i % columns === 0)
-				returnValue.push([]);
-			returnValue[returnValue.length-1].push(currentValue);
-			return returnValue;
-		}, []);
+				returnValue.push([])
+			returnValue[returnValue.length-1].push(currentValue)
+			return returnValue
+		}, [])
 		return (
 			<div className="abstract_selector">
 				{grid.map((item, i) => {
@@ -23,7 +23,7 @@ class AbstractSelector extends React.Component {
 					)
 				}, this)}
 			</div>
-		);
+		)
 	}
 }
 export default AbstractSelector
