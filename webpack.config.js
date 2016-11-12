@@ -36,12 +36,20 @@ if (process.env.NODE_ENV === 'production')
 {
 	module.exports.devtool = "cheap-module-source-map"
 	module.exports.plugins.push(
+		new webpack.DefinePlugin({
+			"process.env": {
+				NODE_ENV: JSON.stringify("production")
+			}
+		})
+	)
+	module.exports.plugins.push(
 		new webpack.optimize.UglifyJsPlugin({
 			compress: {
 				warnings: false,
 				screw_ie8: true
 			},
-			comments: false
+			comments: false,
+			// sourceMap: false // For some reason this makes uglify fail
 		})
 	)
 }
