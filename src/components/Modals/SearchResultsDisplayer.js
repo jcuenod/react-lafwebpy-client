@@ -21,8 +21,8 @@ class SearchResultsDisplayer extends React.Component {
 			eventType: "do_search",
 			callback: (payload) => {
 				var search_urls = {
-					"normal": "http://localhost:8080/api/search",
-					"collocation": "http://localhost:8080/api/collocations"
+					"normal": "/api/search",
+					"collocation": "/api/collocations"
 				}
 				var states = {
 					"normal": "normalResults",

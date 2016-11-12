@@ -121,7 +121,7 @@ class MorphDisplay extends React.Component {
 		EventPropagator.registerListener({
 			eventType: "word_clicked",
 			callback: (payload) => {
-				$.get("http://localhost:8080/api/word_data/" + payload.wid, (result) => {
+				$.post("/api/word_data", JSON.stringify({ word_id: payload.wid }), (result) => {
 					var morph_data = Object.keys(result).map((key, i) => {
 						return {
 							"selected": false,
