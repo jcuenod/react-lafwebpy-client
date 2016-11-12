@@ -10,7 +10,7 @@ class WholeWord extends React.Component {
 				{this.props.word_bits.map((bit, i) => {
 					return bit.wid === "verse" ?
 						<span key={i} className="verse_number">{bit.verse}</span> :
-						<WordBit key={i} wordbit={bit} />
+						<WordBit key={i} wordbit={bit} active_wid={this.props.active_wid} />
 				}, this)}
 			</span>
 		)

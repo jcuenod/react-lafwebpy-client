@@ -58,17 +58,7 @@ class TopMenuBar extends React.Component {
 				this.setState({search_in_progress: true})
 			}
 		}, {
-			eventType: "do_collocation_search",
-			callback: () => {
-				this.setState({search_in_progress: true})
-			}
-		}, {
 			eventType: "do_search_done",
-			callback: () => {
-				this.setState({search_in_progress: false})
-			}
-		}, {
-			eventType: "do_collocation_search_done",
 			callback: () => {
 				this.setState({search_in_progress: false})
 			}
@@ -76,18 +66,19 @@ class TopMenuBar extends React.Component {
 	}
 	fireSearchEvent() {
 		if (this.state.terms.length === 0) return
-		var dataToSend = {
-			"query": this.state.terms,
-			"search_range": this.state.settings.search_range
-		};
-		var events = {
-			normal: "do_search",
-			collocation: "do_collocation_search"
-		}
+		var terms = this.state.terms.map((t) => {
+			var ret = Object.assign({}, t)
+			delete ret["id"]
+			return ret
+		})
 		EventPropagator.fireEvent({
-			eventType: events[this.state.settings.search_type],
+			eventType: "do_search",
 			payload: {
-				query_data: dataToSend
+				search_type: this.state.settings.search_type,
+				query_data: {
+					"query": terms,
+					"search_range": this.state.settings.search_range
+				}
 			}
 		})
 	}

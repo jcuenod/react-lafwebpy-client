@@ -112,12 +112,6 @@ var category_weights = {
 	"gloss": 1,
 }
 
-var tempVar = 0;
-var w_json = [
-	{"tricons": "\u05d9\u05db\u05dc", "nu": "sg", "has_suffix": "No", "vs": "qal", "lex_utf8": "\u05d9\u05db\u05dc[", "sp": "verb", "gn": "m", "gloss": "be able", "ps": "p2", "vt": "impf"},
-	{"is_definite": "und", "tricons": "\u05e2\u05e6\u05d4", "nu": "sg", "has_suffix": "No", "lex_utf8": "\u05e2\u05e6\u05d4/", "sp": "subs", "gn": "f", "gloss": "counsel", "st": "a"},
-	{"tricons": "\u05db\u05d9", "has_suffix": "No", "lex_utf8": "\u05db\u05d9", "sp": "conj", "gloss": "that"}
-]
 class MorphDisplay extends React.Component {
 	constructor(props) {
 		super(props)
@@ -127,16 +121,18 @@ class MorphDisplay extends React.Component {
 		EventPropagator.registerListener({
 			eventType: "word_clicked",
 			callback: (payload) => {
-				tempVar++
-				var result = w_json[tempVar % w_json.length]
-				var morph_data = Object.keys(result).map(function(key, i){
-					return {
-						"selected": false,
-						"k": key,
-						"v": result[key]
-					};
-				});
-				this.setState({"data": morph_data})
+				$.get("http://localhost:8080/api/word_data/" + payload.wid, (result) => {
+					var morph_data = Object.keys(result).map((key, i) => {
+						return {
+							"selected": false,
+							"k": key,
+							"v": result[key]
+						}
+					})
+					this.setState({
+						"data": morph_data
+					});
+				})
 			}
 		})
 	}
@@ -146,6 +142,12 @@ class MorphDisplay extends React.Component {
 				previousValue[currentValue.k] = currentValue.v
 			return previousValue
 		}, {})
+		var morph_state = this.state.data.slice();
+		var new_morph_state = morph_state.map((m) => {
+			m.selected = false
+			return m
+		})
+		this.setState(new_morph_state)
 		EventPropagator.fireEvent({
 			eventType: "add_search_term",
 			payload: {term: search_term}
