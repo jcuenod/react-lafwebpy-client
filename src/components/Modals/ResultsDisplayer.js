@@ -2,12 +2,12 @@ import React from 'react'
 import {render} from 'react-dom'
 
 import Modal from './Modal'
-import TabulatedResults from './TabulatedResults'
+import SearchResults from './SearchResults'
 import CollocationResults from './CollocationResults'
 
 import EventPropagator from 'events/EventPropagator'
 
-class SearchResultsDisplayer extends React.Component {
+class ResultsDisplayer extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -58,23 +58,19 @@ class SearchResultsDisplayer extends React.Component {
 			}
 		})
 	}
-	clearResults() {
-		this.setState({"show": "none"})
-	}
 	render() {
 		return (
 			<div>
-				<Modal isVisible={this.state.show === "normal"}
-					onClickHandler={this.clearResults.bind(this)}>
-					<TabulatedResults data={this.state.normalResults} />
-				</Modal>
-
-				<Modal isVisible={this.state.show === "collocation"}
-					onClickHandler={this.clearResults.bind(this)}>
-					<CollocationResults data={this.state.collocationResults} />
+				<Modal isVisible={this.state.show !== "none"}
+					onClickHandler={() => this.setState({"show": "none"})}>
+					{this.state.show === "collocation" ?
+						<CollocationResults data={this.state.collocationResults} /> :
+						this.state.show === "normal" ?
+							<SearchResults data={this.state.normalResults} /> :
+							""}
 				</Modal>
 			</div>
 		)
 	}
 }
-export default SearchResultsDisplayer
+export default ResultsDisplayer

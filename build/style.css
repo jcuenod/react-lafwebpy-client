@@ -362,11 +362,8 @@ body:after {
 	color: #d48849;
 }
 
-.collocation_table {
-	margin: 0 auto;
-	table-layout: fixed;
-}
-.collocation_table td:last-child{
+/* collocation table */
+.results_table .large_number {
 	font-size: large;
 	font-weight: bold;
 }
