@@ -367,6 +367,9 @@ body:after {
 	font-size: large;
 	font-weight: bold;
 }
+.results_table .reference_list {
+	text-align: left;
+}
 
 
 .abstract_selector {

@@ -18,7 +18,7 @@ const CollocationResults = ({data}) => (
 				<tr key={i}>
 					<td className="hebrew">{row.lexeme}</td>
 					<td className="large_number">{row.count}</td>
-					<td>{format_references(row.references)}</td>
+					<td className="reference_list">{format_references(row.references)}</td>
 				</tr>
 			)
 		})}
