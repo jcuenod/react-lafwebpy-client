@@ -1,9 +1,9 @@
 import React from 'react'
 import EventPropagator from 'events/EventPropagator'
 
-const WordBit = ({wordbit, active}) => (
+const WordBit = ({wordbit, active_wid}) => (
 	<span>
-		<span className={active === wordbit.wid ? "word_bit active" : "word_bit"}
+		<span className={active_wid === wordbit.wid ? "word_bit active" : "word_bit"}
 			onClick={() => EventPropagator.fireEvent({
 				eventType: "word_clicked",
 				payload: {wid: wordbit.wid}})
