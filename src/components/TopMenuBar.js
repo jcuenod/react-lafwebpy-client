@@ -68,7 +68,7 @@ class TopMenuBar extends React.Component {
 		if (this.state.terms.length === 0) return
 		var terms = this.state.terms.map((t) => {
 			var ret = Object.assign({}, t)
-			delete ret["id"]
+			delete ret["uid"]
 			return ret
 		})
 		EventPropagator.fireEvent({
