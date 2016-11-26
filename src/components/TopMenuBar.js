@@ -23,7 +23,7 @@ class TopMenuBar extends React.Component {
 			callback: (payload) => {
 				var new_terms = this.state.terms.slice()
 				var term_to_push = payload.term
-				term_to_push.id = new Date().valueOf()
+				term_to_push.uid = new Date().valueOf()
 				new_terms.push(term_to_push)
 				this.setState({"terms": new_terms})
 			}
@@ -31,7 +31,7 @@ class TopMenuBar extends React.Component {
 			eventType: "remove_search_term",
 			callback: (payload) => {
 				var new_terms = this.state.terms.slice()
-				var index_to_remove = new_terms.map((o) => o.id).indexOf(payload.id)
+				var index_to_remove = new_terms.map((o) => o.uid).indexOf(payload.uid)
 				new_terms.splice(index_to_remove, 1)
 				this.setState({"terms": new_terms})
 			}
@@ -84,7 +84,7 @@ class TopMenuBar extends React.Component {
 	}
 	render() {
 		var searchTermElements = this.state.terms.map((term) => {
-			return <SearchTerm key={term.id} data={term} />
+			return <SearchTerm key={term.uid} data={term} />
 		}, this)
 		var search_button_classes = ["do_search"]
 		if (this.state.search_in_progress)

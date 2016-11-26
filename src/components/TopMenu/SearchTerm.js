@@ -44,7 +44,7 @@ class SearchTerm extends React.Component {
 			<div className="search_term" onClick={() =>
 					EventPropagator.fireEvent({
 						eventType: "remove_search_term",
-						payload: { index: this.props.id }
+						payload: { uid: this.props.data.uid }
 					})
 				}>
 				<heading>
