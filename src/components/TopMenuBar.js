@@ -83,9 +83,6 @@ class TopMenuBar extends React.Component {
 		})
 	}
 	render() {
-		var searchTermElements = this.state.terms.map((term) => {
-			return <SearchTerm key={term.uid} data={term} />
-		}, this)
 		var search_button_classes = ["do_search"]
 		if (this.state.search_in_progress)
 			search_button_classes.push("in-progress")
@@ -95,7 +92,9 @@ class TopMenuBar extends React.Component {
 					opacity: this.state.navigate_in_progress ? 0.4: 1,
 					pointerEvents: this.state.navigate_in_progress ? "none": "all"
 				}}>
-				{searchTermElements}
+				{this.state.terms.map((term) => (
+					<SearchTerm key={term.uid} data={term} />)
+				)}
 				<div className={search_button_classes.join(" ")} onClick={this.fireSearchEvent.bind(this)}>
 				</div>
 				<SearchSettings settings={this.state.settings} />
