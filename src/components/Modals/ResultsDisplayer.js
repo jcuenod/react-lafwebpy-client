@@ -62,12 +62,13 @@ class ResultsDisplayer extends React.Component {
 		return (
 			<div>
 				<Modal isVisible={this.state.show !== "none"}
-					onClickHandler={() => this.setState({"show": "none"})}>
+					onClickHandler={() => console.log('this.setState({"show": "none"})')}>
 					{this.state.show === "collocation" ?
 						<CollocationResults data={this.state.collocationResults} /> :
 						this.state.show === "normal" ?
 							<SearchResults data={this.state.normalResults} /> :
 							""}
+					<div className="close_button" onClick={() => this.setState({"show": "none"})}>close</div>
 				</Modal>
 			</div>
 		)

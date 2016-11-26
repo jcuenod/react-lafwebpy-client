@@ -314,7 +314,23 @@ body:after {
 	opacity: 0;
 	pointer-events: none;
 }
-
+.modal .close_button {
+	position: fixed;
+	top: 0.5em;
+	right: 1.5em;
+	line-height: 160%;
+	padding: 0px 1em;
+	border-radius: 5px;
+	color: rgb(238, 238, 238);
+	cursor: pointer;
+	background-color: rgb(212, 73, 73);
+	border: 3px solid hsla(0,62%,40%,1);
+}
+.modal .close_button:hover {
+	color: #fff;
+	background-color: #de7373;
+	border: 3px solid #7c1d1d;
+}
 
 
 .results_tally {
