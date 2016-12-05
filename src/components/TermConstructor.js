@@ -4,20 +4,20 @@ import EventPropagator from '../events/EventPropagator'
 
 var term_to_english = {
 	"categories": {
-		"lex_utf8": "Sense Lexeme",
-		"tricons": "Consonantal Root",
-		"g_prs_utf8": "Pronominal Suffix",
-		"is_definite": "Definite",
-		"has_suffix": "Has Pron. Suffix",
-		"g_uvf_utf8": "Univalent Final",
 		"sp": "Part of Speech",
+		"tricons": "Consonantal Root",
+		"vt": "Tense",
+		"vs": "Stem",
 		"ps": "Person",
 		"nu": "Number",
 		"gn": "Gender",
-		"vt": "Tense",
-		"vs": "Stem",
 		"st": "State",
-		"gloss": "Gloss"
+		"is_definite": "Definite",
+		"has_suffix": "Has Pron. Suffix",
+		"gloss": "Gloss",
+		"g_prs_utf8": "Pronominal Suffix",
+		"g_uvf_utf8": "Univalent Final",
+		"lex_utf8": "Sense Lexeme",
 	},
 	"is_definite": {
 		"det": "Yes",
