@@ -7,17 +7,34 @@ import EventPropagator from 'events/EventPropagator'
 import SearchBuilder from 'components/TopMenuBar'
 import BibleText from 'components/BibleText'
 import MorphDisplay from 'components/MorphDisplay'
+import TermConstructor from 'components/TermConstructor'
 import ModalDisplayer from 'components/ModalDisplayer'
 
 class App extends React.Component {
+	constructor() {
+		super()
+		this.state = {
+			construction_mode: false
+		}
+	}
 	componentDidMount() {
-		EventPropagator.registerListener({
+		EventPropagator.registerListener([{
 			eventType: "navigation_complete",
 			callback: (payload) => {
 				var ref_string = "/" + payload.reference.book + "/" + payload.reference.chapter
 				localStorage.setItem("reference", ref_string)
 			}
-		})
+		}, {
+			eventType: "remove_search_term",
+			callback: (payload) => {
+				this.setState({"construction_mode": true})
+			}
+		}, {
+			eventType: "word_clicked",
+			callback: (payload) => {
+				this.setState({"construction_mode": false})
+			}
+		}])
 
 		var ref = "/Genesis/1"
 		if (localStorage.getItem('reference'))
@@ -41,7 +58,12 @@ class App extends React.Component {
 			<div>
 				<SearchBuilder />
 				<BibleText />
-				<MorphDisplay />
+				<div style={this.state.construction_mode ? {display: "none"} : {}}>
+					<MorphDisplay />
+				</div>
+				<div style={this.state.construction_mode ? {} : {display: "none"}}>
+					<TermConstructor />
+				</div>
 				<ModalDisplayer />
 			</div>
 		)

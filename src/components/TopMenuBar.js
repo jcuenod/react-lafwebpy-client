@@ -31,7 +31,7 @@ class TopMenuBar extends React.Component {
 			eventType: "remove_search_term",
 			callback: (payload) => {
 				var new_terms = this.state.terms.slice()
-				var index_to_remove = new_terms.map((o) => o.uid).indexOf(payload.uid)
+				var index_to_remove = new_terms.map((o) => o.uid).indexOf(payload.search_term.uid)
 				new_terms.splice(index_to_remove, 1)
 				this.setState({"terms": new_terms})
 			}
@@ -86,17 +86,32 @@ class TopMenuBar extends React.Component {
 		var search_button_classes = ["do_search"]
 		if (this.state.search_in_progress)
 			search_button_classes.push("in-progress")
+		var term_under_construction = ["term_under_construction"]
+		if (this.state.under_construction)
+			term_under_construction.push("show")
 
 		return (
 			<div className="search_builder" style={{
 					opacity: this.state.navigate_in_progress ? 0.4: 1,
 					pointerEvents: this.state.navigate_in_progress ? "none": "all"
 				}}>
+				<div className="build_search_term" onClick={() => EventPropagator.fireEvent({
+					eventType: "build_term",
+					payload: null
+				})}></div>
+				<div className={term_under_construction.join(" ")}
+					onClick={() => {
+						EventPropagator.fireEvent({
+							eventType: "remove_search_term",
+							payload: { search_term: [] }
+						})
+					}}>
+					<svg enable-background="new 0 0 64 64" height="90%" id="Layer_1" version="1.1" viewBox="0 0 64 64" width="40px"><g fill="#fff"><path d="M55.736,13.636l-4.368-4.362c-0.451-0.451-1.044-0.677-1.636-0.677c-0.592,0-1.184,0.225-1.635,0.676l-3.494,3.484   l7.639,7.626l3.494-3.483C56.639,15.998,56.639,14.535,55.736,13.636z"/><polygon points="21.922,35.396 29.562,43.023 50.607,22.017 42.967,14.39  "/><polygon points="20.273,37.028 18.642,46.28 27.913,44.654  "/><path d="M41.393,50.403H12.587V21.597h20.329l5.01-5H10.82c-1.779,0-3.234,1.455-3.234,3.234v32.339   c0,1.779,1.455,3.234,3.234,3.234h32.339c1.779,0,3.234-1.455,3.234-3.234V29.049l-5,4.991V50.403z"/></g></svg>
+				</div>
 				{this.state.terms.map((term) => (
 					<SearchTerm key={term.uid} data={term} />)
 				)}
-				<div className={search_button_classes.join(" ")} onClick={this.fireSearchEvent.bind(this)}>
-				</div>
+				<div className={search_button_classes.join(" ")} onClick={this.fireSearchEvent.bind(this)}></div>
 				<SearchSettings settings={this.state.settings} />
 				<BibleReference />
 				<div className="spacer"></div>
