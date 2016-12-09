@@ -341,21 +341,27 @@ body:after {
 	padding: 0.3em 0;
 }
 .results_table {
+	box-sizing: border-box;
 	font-size: 18px;
 	border-spacing: 20px 15px;
+	width: 100%;
 }
 .results_table td.reference {
 	text-align: left;
 	font-size: 80%;
+	width: 5%;
 }
 .results_table td.hebrew {
+	box-sizing: border-box;
 	text-align: right;
 	font-family: "Ezra SIL";
 	font-size: 130%;
 	padding-bottom: 0.3em;
+	width: 47.5%;
 }
 .results_table td.english {
 	text-align: left;
+	width: 47.5%;
 }
 .results_table td.english verse {
 	color: #d44949;
