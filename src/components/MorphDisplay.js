@@ -3,6 +3,7 @@ import EventPropagator from '../events/EventPropagator'
 
 var term_to_english = {
 	"categories": {
+		"lex": "Sense Lexeme*",
 		"lex_utf8": "Sense Lexeme",
 		"tricons": "Consonantal Root",
 		"g_prs_utf8": "Pronominal Suffix",
@@ -16,7 +17,10 @@ var term_to_english = {
 		"vt": "Tense",
 		"vs": "Stem",
 		"st": "State",
-		"gloss": "Gloss"
+		"sdbh": "Semantic Domain",
+		"lxxlexeme": "LXX Lexeme",
+		"gloss": "Gloss",
+		"invert": "Invert (search helper)",
 	},
 	"is_definite": {
 		"det": "Yes",
@@ -99,17 +103,25 @@ var term_to_english = {
 		"c": "Construct",
 		"e": "Emphatic",
 		"NA": "NA"
+	},
+	"invert": {
+		"t": "True",
+		"f": "False"
 	}
 }
 var category_weights = {
 	"vs": -10,
 	"vt": -9,
+	"lex": -8,
 	"lex_utf8": -8,
 	"ps": -7,
 	"nu": -6,
 	"gn": -5,
 	"sp": -4,
-	"gloss": 1,
+	"sdbh": 1,
+	"lxxlexeme": 2,
+	"gloss": 3,
+	"invert": 10,
 }
 
 class MorphDisplay extends React.Component {
