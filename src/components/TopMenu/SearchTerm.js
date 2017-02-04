@@ -26,8 +26,22 @@ var png_prop = {
 
 class SearchTerm extends React.Component {
 	render() {
-		var lexeme = this.props.data.hasOwnProperty("lex_utf8") ? this.props.data.lex_utf8.replace(/[\/\[=]/g,"") :
-			(this.props.data.hasOwnProperty("tricons") ? this.props.data.tricons : "ANY")
+		var props = Object.keys(this.props.data)
+		var lexeme = "ANY"
+		if (props.includes("lex_utf8"))
+			lexeme = this.props.data.lex_utf8.replace(/[\/\[=]/g, "")
+		else if (props.includes("tricons"))
+			lexeme = this.props.data.tricons
+		else if (props.includes("lex"))
+			lexeme = this.props.data.lex
+		else if (props.includes("lxxlexeme"))
+			lexeme = this.props.data.lxxlexeme
+		else if (props.includes("gloss"))
+			lexeme = this.props.data.gloss
+		else if (props.includes("sdbh"))
+			lexeme = this.props.data.sdbh
+		// var lexeme = this.props.data.hasOwnProperty("lex_utf8") ? this.props.data.lex_utf8.replace(/[\/\[=]/g,"") :
+		//	(this.props.data.hasOwnProperty("tricons") ? this.props.data.tricons : "ANY")
 
 		var png = typeof this.props.data.ps !== "undefined" ? (png_prop.ps[this.props.data.ps]) : "-"
 		png = png + (typeof this.props.data.gn !== "undefined" ? (png_prop.gn[this.props.data.gn]) : "-")

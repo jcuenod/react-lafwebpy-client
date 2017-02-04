@@ -6,6 +6,8 @@ import 'react-table/react-table.css'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 
+import term_to_english from 'data/MorphCodes'
+
 class WordStudyResults extends React.Component {
 	constructor(props) {
 		super(props)
@@ -16,7 +18,12 @@ class WordStudyResults extends React.Component {
 	render() {
 		var cols = this.props.data.search_results.columns
 		var select_options = cols.map((x) => ({ "value": x["accessor"], "label": x["header"]}))
-		var rows = this.props.data.search_results.rows
+		var cols = cols.map((x) => {x["minWidth"] = undefined; return x})
+		// var rows = this.props.data.search_results.rows.map((r) => {
+		// 	keys = Object.keys(r)
+		// 	for
+		// 	.map((k) => k in )
+		// })
 		return (
 			<div>
 				<h1>Word Study Results ({rows.length})</h1>
