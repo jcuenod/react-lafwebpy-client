@@ -3,7 +3,7 @@ import React from 'react'
 import SettingsListItem from './SettingsListItem'
 
 let search_ranges = ["phrase","clause","sentence","verse"]
-let search_types = ["normal","collocation"]
+let search_types = ["normal","collocation","word study"]
 
 class SearchSettingsMenu extends React.Component {
 	render() {

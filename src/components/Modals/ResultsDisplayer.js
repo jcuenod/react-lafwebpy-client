@@ -4,6 +4,7 @@ import {render} from 'react-dom'
 import Modal from './Modal'
 import SearchResults from './SearchResults'
 import CollocationResults from './CollocationResults'
+import WordStudyResults from './WordStudyResults'
 
 import EventPropagator from 'events/EventPropagator'
 
@@ -22,11 +23,13 @@ class ResultsDisplayer extends React.Component {
 			callback: (payload) => {
 				var search_urls = {
 					"normal": "/api/search",
-					"collocation": "/api/collocations"
+					"collocation": "/api/collocations",
+					"word study": "/api/word_study",
 				}
 				var states = {
 					"normal": "normalResults",
-					"collocation": "collocationResults"
+					"collocation": "collocationResults",
+					"word study": "wordStudyResults",
 				}
 				$.ajax({
 					method: "POST",
@@ -59,15 +62,24 @@ class ResultsDisplayer extends React.Component {
 		})
 	}
 	render() {
+		var resultElement = ""
+		switch (this.state.show) {
+			case "normal":
+				resultElement = <SearchResults data={this.state.normalResults} />
+				break;
+			case "collocation":
+				resultElement = <CollocationResults data={this.state.collocationResults} />
+				break;
+			case "word study":
+				resultElement = <WordStudyResults data={this.state.wordStudyResults} />
+				break;
+		}
+
 		return (
 			<div>
 				<Modal isVisible={this.state.show !== "none"}
 					onClickHandler={() => console.log('this.setState({"show": "none"})')}>
-					{this.state.show === "collocation" ?
-						<CollocationResults data={this.state.collocationResults} /> :
-						this.state.show === "normal" ?
-							<SearchResults data={this.state.normalResults} /> :
-							""}
+					{resultElement}
 					<div className="close_button" onClick={() => this.setState({"show": "none"})}>close</div>
 				</Modal>
 			</div>
