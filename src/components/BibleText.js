@@ -15,10 +15,10 @@ class BibleText extends React.Component {
 			eventType: "navigation_request",
 			callback: (payload) => {
 				$.post("/api/book_chapter", JSON.stringify(payload.reference), (result) => {
-					this.setState({data: result})
+					this.setState({data: result.chapter_data})
 					EventPropagator.fireEvent({
 						eventType: "navigation_complete",
-						payload: { reference: payload.reference }
+						payload: { reference: result.reference }
 					})
 				})
 			}
