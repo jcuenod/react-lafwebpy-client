@@ -19,6 +19,7 @@ class WordStudyResults extends React.Component {
 		var cols = this.props.data.search_results.columns
 		var select_options = cols.map((x) => ({ "value": x["accessor"], "label": x["header"]}))
 		var cols = cols.map((x) => {x["minWidth"] = undefined; return x})
+		var rows = this.props.data.search_results.rows
 		// var rows = this.props.data.search_results.rows.map((r) => {
 		// 	keys = Object.keys(r)
 		// 	for
