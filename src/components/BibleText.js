@@ -17,7 +17,7 @@ class BibleText extends React.Component {
 				$.post("/api/book_chapter", JSON.stringify(payload.reference), (result) => {
 					this.setState({data: result.chapter_data})
 					var newRef = result.reference
-					newRef["book"] = newRef["book"].replace("_", " ")
+					newRef["book"] = newRef["book"].replace(/_/g, " ")
 					EventPropagator.fireEvent({
 						eventType: "navigation_complete",
 						payload: { reference: newRef }
