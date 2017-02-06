@@ -14,10 +14,12 @@ class BibleText extends React.Component {
 		EventPropagator.registerListener([{
 			eventType: "navigation_request",
 			callback: (payload) => {
-				$.post("/api/book_chapter", JSON.stringify(payload.reference), (result) => {
+				var ref = payload.reference
+				ref["book"] = ref["book"].replace(/\ /g, "_")
+				$.post("/api/book_chapter", JSON.stringify(ref), (result) => {
 					this.setState({data: result.chapter_data})
 					var newRef = result.reference
-					newRef["book"] = newRef["book"].replace(/_/g, " ")
+					newRef["book"] = newRef["book"].replace(/\_/g, " ")
 					EventPropagator.fireEvent({
 						eventType: "navigation_complete",
 						payload: { reference: newRef }

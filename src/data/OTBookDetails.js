@@ -20,7 +20,7 @@ const OTBookDetails = [
 	{"name": "Psalms", "chapters": 150, "abbreviation": "Ps"},
 	{"name": "Proverbs", "chapters": 31, "abbreviation": "Prov"},
 	{"name": "Ecclesiastes", "chapters": 12, "abbreviation": "Eccl"},
-	{"name": "Song of Solomon", "chapters": 8, "abbreviation": "Songs"},
+	{"name": "Song of songs", "chapters": 8, "abbreviation": "Songs"},
 	{"name": "Isaiah", "chapters": 66, "abbreviation": "Isa"},
 	{"name": "Jeremiah", "chapters": 52, "abbreviation": "Jer"},
 	{"name": "Lamentations", "chapters": 5, "abbreviation": "Lam"},
