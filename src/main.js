@@ -23,6 +23,7 @@ class App extends React.Component {
 			callback: (payload) => {
 				var ref_string = "/" + payload.reference.book + "/" + payload.reference.chapter
 				localStorage.setItem("reference", ref_string)
+				browserHistory.push(ref_string)
 			}
 		}, {
 			eventType: "remove_search_term",
