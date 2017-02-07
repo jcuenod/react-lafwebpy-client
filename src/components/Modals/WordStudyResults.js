@@ -13,34 +13,15 @@ class WordStudyResults extends React.Component {
 		super(props)
 		this.state = {
 			visibleColumns: [
-				{
-					"value": "lex",
-					"label": "lex"
-				},{
-					"value": "tricons",
-					"label": "tricons"
-				},{
-					"value": "sdbh",
-					"label": "sdbh"
-				},{
-					"value": "lxxlexeme",
-					"label": "lxxlexeme"
-				},{
-					"value": "vs",
-					"label": "vs"
-				},{
-					"value": "vt",
-					"label": "vt"
-				},{
-					"value": "book",
-					"label": "book"
-				},{
-					"value": "ch",
-					"label": "ch"
-				},{
-					"value": "v",
-					"label": "v"
-				},
+				{ "value": "lex", "label": "lex"},
+				{ "value": "tricons", "label": "tricons"},
+				{ "value": "sdbh", "label": "sdbh"},
+				{ "value": "lxxlexeme", "label": "lxxlexeme"},
+				{ "value": "vs", "label": "vs"},
+				{ "value": "vt", "label": "vt"},
+				{ "value": "book", "label": "book"},
+				{ "value": "ch", "label": "ch"},
+				{ "value": "v", "label": "v"},
 			],
 			pivotColumns: [],
 		}
@@ -54,11 +35,6 @@ class WordStudyResults extends React.Component {
 			return x
 		})
 		var rows = this.props.data.search_results.rows
-		// var rows = this.props.data.search_results.rows.map((r) => {
-		// 	keys = Object.keys(r)
-		// 	for
-		// 	.map((k) => k in )
-		// })
 		return (
 			<div>
 				<h1>Word Study Results ({rows.length})</h1>

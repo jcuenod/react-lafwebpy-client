@@ -65,7 +65,12 @@ class TopMenuBar extends React.Component {
 		}])
 	}
 	fireSearchEvent() {
-		if (this.state.terms.length === 0) return
+		if (this.state.terms.length === 0)
+		{
+			alert("You need to add search term. To do so,\n1. Click on a word\n2. Click on a morphological feature\n3. Click 'add search term'")
+			return
+		}
+
 		var terms = this.state.terms.map((t) => {
 			var ret = Object.assign({}, t)
 			delete ret["uid"]

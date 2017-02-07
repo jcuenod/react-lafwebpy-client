@@ -37,22 +37,26 @@ class App extends React.Component {
 			}
 		}])
 
-		var ref = "/Genesis/1"
-		if (localStorage.getItem('reference'))
+		var do_navigate = () => {
+			var ref = "/Genesis/1"
+			if (localStorage.getItem('reference'))
 			ref = localStorage.getItem('reference')
-		if (location.pathname.replace("/", "").length > 0)
+			if (location.pathname.replace("/", "").length > 0)
 			ref = location.pathname
-		var ref_array = ref.replace(/^\//, "").split("/")
-		var ref_obj = {
-			"book": ref_array[0],
-			"chapter": Number.isInteger(+ref_array[1]) ? +ref_array[1] : 1
-		}
-		EventPropagator.fireEvent({
-			eventType: "navigation_request",
-			payload: {
-				reference: ref_obj
+			var ref_array = ref.replace(/^\//, "").split("/")
+			var ref_obj = {
+				"book": ref_array[0],
+				"chapter": Number.isInteger(+ref_array[1]) ? +ref_array[1] : 1
 			}
-		})
+			EventPropagator.fireEvent({
+				eventType: "navigation_request",
+				payload: {
+					reference: ref_obj
+				}
+			})
+		}
+		window.onpopstate = do_navigate
+		do_navigate()
 	}
 	render() {
 		return (
