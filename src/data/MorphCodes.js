@@ -2,6 +2,7 @@ const term_to_english = {
 	"categories": {
 		"lex": "Sense Lexeme*",
 		"lex_utf8": "Sense Lexeme",
+		"g_cons_utf8": "Inflected Consonants",
 		"tricons": "Consonantal Root",
 		"g_prs_utf8": "Pronominal Suffix",
 		"prs_gn": "Prn. sfx Gender",
