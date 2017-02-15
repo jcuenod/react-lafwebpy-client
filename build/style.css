@@ -262,6 +262,7 @@ body:after {
 	text-align: left;
 	font-size: 16px;
 	overflow: auto;
+	bottom: 0;
 }
 
 .morph_displayer table {
