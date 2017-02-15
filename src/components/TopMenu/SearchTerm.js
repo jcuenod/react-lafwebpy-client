@@ -36,6 +36,8 @@ class SearchTerm extends React.Component {
 			lexeme = this.props.data.lex
 		else if (props.includes("lxxlexeme"))
 			lexeme = this.props.data.lxxlexeme
+		else if (props.includes("g_cons_utf8"))
+			lexeme = this.props.data.lxxlexeme
 		else if (props.includes("gloss"))
 			lexeme = this.props.data.gloss
 		else if (props.includes("sdbh"))
