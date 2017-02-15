@@ -253,12 +253,15 @@ body:after {
 
 .morph_displayer {
 	position: fixed;
-	left: calc(50% - (1100px/2));
-	width: 270px;
+	left: calc(50% - (1165px/2));
+	width: 300px;
+	/*left: calc(50% - (1100px/2));
+	width: 270px;*/
 	top: 15vh;
 	color: #222;
 	text-align: left;
 	font-size: 16px;
+	overflow: auto;
 }
 
 .morph_displayer table {
