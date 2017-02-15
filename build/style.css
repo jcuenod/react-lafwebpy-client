@@ -519,13 +519,13 @@ body:after {
   padding: 8px 10px;
 }
 
-.morph_displayer td:last-child {
+.morph_displayer td:nth-child(2) {
 	text-align: right;
 }
-.morph_displayer td:last-child:hover {
+.morph_displayer td:nth-child(2):hover {
 	background-color: #fcc;
 }
-.morph_displayer td:last-child:hover svg path#colorme {
+.morph_displayer td:nth-child(2):hover svg path#colorme {
 	fill: #800;
 }
 
