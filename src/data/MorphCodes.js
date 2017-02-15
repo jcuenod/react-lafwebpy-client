@@ -19,6 +19,7 @@ const term_to_english = {
 		"vs": "Stem",
 		"st": "State",
 		"sdbh": "Semantic Domain",
+		"accents": "Accent",
 		"lxxlexeme": "LXX Lexeme",
 		"gloss": "Gloss",
 		"invert": "Invert (search helper)",
