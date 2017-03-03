@@ -5,15 +5,25 @@ import SearchSettings from 'components/TopMenu/SearchSettings'
 import SearchTerm from 'components/TopMenu/SearchTerm'
 import BibleReference from 'components/TopMenu/BibleReference'
 
+
+// This list is duplicated in SearchSettingsMenu so don't only change in one place...
+let builtin_filters = {
+	"pentateuch": ["Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy"],
+	"minor prophets": ["Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi"],
+	// note the note above
+}
+
 class TopMenuBar extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			terms: [],
 			search_in_progress: false,
+			reference: {},
 			settings: {
 				search_range: "clause",
-				search_type: "normal"
+				search_type: "normal",
+				search_filter: "none"
 			}
 		}
 	}
@@ -45,7 +55,7 @@ class TopMenuBar extends React.Component {
 		}, {
 			eventType: "navigation_request",
 			callback: (payload) => {
-				this.setState({navigate_in_progress: true})
+				this.setState({navigate_in_progress: true, reference: payload.reference})
 			}
 		}, {
 			eventType: "navigation_complete",
@@ -76,15 +86,29 @@ class TopMenuBar extends React.Component {
 			delete ret["uid"]
 			return ret
 		})
-		EventPropagator.fireEvent({
-			eventType: "do_search",
-			payload: {
-				search_type: this.state.settings.search_type,
-				query_data: {
-					"query": terms,
-					"search_range": this.state.settings.search_range
-				}
+		var payload = {
+			search_type: this.state.settings.search_type,
+			query_data: {
+				"query": terms,
+				"search_range": this.state.settings.search_range
 			}
+		}
+		if (this.state.settings.search_filter == 'none') {
+			//do nothing
+		}
+		else if (this.state.settings.search_filter == 'current book') {
+			payload.query_data["search_filter"] = [this.state.reference.book]
+		}
+		else if (this.state.settings.search_filter == 'custom') {
+			payload.query_data["search_filter"] = localStorage.getItem("custom_search_filter")
+		}
+		else if (Object.keys(builtin_filters).includes(this.state.settings.search_filter)) {
+			payload.query_data["search_filter"] = builtin_filters[this.state.settings.search_filter]
+		}
+
+		EventPropagator.fireEvent({
+			"eventType": "do_search",
+			"payload": payload
 		})
 	}
 	render() {
