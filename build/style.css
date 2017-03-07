@@ -282,6 +282,11 @@ body:after {
 .morph_displayer td {
 	padding: 2px 8px;
 }
+.morph_displayer td:first-child {
+	text-transform: uppercase;
+	font-size: 75%;
+	vertical-align: middle;
+}
 .add_search_term {
 	text-align: center;
 	font-weight: bold;
