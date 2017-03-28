@@ -23,6 +23,7 @@ const term_to_english = {
 		"sdbh": "Semantic Domain",
 		"lxxlexeme": "LXX Lexeme",
 		"gloss": "Gloss",
+		"rootregex": "Root Regex",
 		"invert": "Invert (search helper)",
 	},
 	"is_definite": {
