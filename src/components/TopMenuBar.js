@@ -4,6 +4,7 @@ import EventPropagator from 'events/EventPropagator'
 import SearchSettings from 'components/TopMenu/SearchSettings'
 import SearchTerm from 'components/TopMenu/SearchTerm'
 import BibleReference from 'components/TopMenu/BibleReference'
+import GeneralSettings from 'components/TopMenu/GeneralSettings'
 
 
 // This list is duplicated in SearchSettingsMenu so don't only change in one place...
@@ -147,6 +148,7 @@ class TopMenuBar extends React.Component {
 				<div className={search_button_classes.join(" ")} onClick={this.fireSearchEvent.bind(this)}></div>
 				<SearchSettings settings={this.state.settings} />
 				<BibleReference />
+				<GeneralSettings settings={this.state.settings} />
 				<div className="spacer"></div>
 			</div>
 		)

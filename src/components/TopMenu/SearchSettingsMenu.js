@@ -17,7 +17,7 @@ search_filters.push(...Object.keys(builtin_filters))
 class SearchSettingsMenu extends React.Component {
 	render() {
 		return (
-			<ul className="search_settings_menu">
+			<ul className="settings_menu_dropdown">
 				<li className="heading">search range</li>
 				{search_ranges.map((value, i) => {
 					return (

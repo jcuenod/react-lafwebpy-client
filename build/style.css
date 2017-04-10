@@ -133,6 +133,7 @@ body:after {
 	background-color: #7c7;
 }
 
+.search_builder .general_settings,
 .search_builder .search_settings {
 	width: 10vh;
 	margin: 0 1vw;
@@ -142,24 +143,31 @@ body:after {
 	align-items: center;
 	cursor: pointer;
 }
+.search_builder .general_settings .general_settings_button,
 .search_builder .search_settings .search_settings_button {
 	position: relative;
 	display: block;
 	width: 6vh;
 	height: 6vh;
 	padding: 0;
-	background: transparent url("/images/gear.svg") no-repeat;
 	background-size: contain;
 	background-position: center;
 	transition: all 300ms ease;
 }
-.search_builder .search_settings_button:hover .search_settings_menu {
+.search_builder .search_settings .search_settings_button {
+	background: transparent url("/images/gear.svg") no-repeat;
+}
+.search_builder .general_settings .general_settings_button {
+	background: transparent url("/images/hamburger.svg") no-repeat;
+}
+.search_builder .general_settings_button:hover .settings_menu_dropdown,
+.search_builder .search_settings_button:hover .settings_menu_dropdown {
 	opacity: 1;
 	display: block;
 	pointer-events: all;
 	top: 7.5vh;
 }
-.search_settings_menu {
+.settings_menu_dropdown {
 	pointer-events: none;
 	opacity: 0;
 	transition: all 300ms ease;
@@ -174,7 +182,7 @@ body:after {
 	border-bottom: 3px solid #88d;
 	border-radius: 3px;
 }
-.search_settings_menu:before {
+.settings_menu_dropdown:before {
 	position: absolute;
 	top: calc(-1.5vh - 2px);
 	height: 1.5vh;
@@ -184,27 +192,37 @@ body:after {
 	background-size: contain;
 	content: "";
 }
-.search_settings_menu li {
+.settings_menu_dropdown li {
 	line-height: 2em;
 	background-color: #ddd;
 	padding: 0 1em;
 	transition: padding 300ms ease;
 }
-.search_settings_menu li:hover {
+.settings_menu_dropdown li:hover {
 	background-color: #ccc;
 }
-.search_settings_menu li.active {
+.settings_menu_dropdown li.active {
 	background-color: #dfd;
 	padding-left: 1.5em;
 }
-.search_settings_menu li.active:hover {
+.settings_menu_dropdown li.active:hover {
 	background-color: #cfc;
 }
-.search_settings_menu .heading {
+.settings_menu_dropdown .heading {
 	line-height: 1.3em;
 	background-color: #aaf !important;
 	color: #eef;
 	font-weight: bold;
+}
+.settings_menu_dropdown .menu_item_button {
+	line-height: 2em;
+	background-color: #ddf;
+	color: #000;
+	padding: 0 1em;
+	transition: padding 300ms ease;
+}
+.settings_menu_dropdown .menu_item_button:hover {
+	background-color: #eef;
 }
 
 
