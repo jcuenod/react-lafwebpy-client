@@ -21,8 +21,8 @@ class TopMenuBar extends React.Component {
 			search_range: "clause",
 			search_type: "normal",
 			search_filter: "none",
-			font_size: "medium",
-			font_family: "Ezra SIL"
+			font_size: "",
+			font_family: ""
 		}
 		this.state = {
 			"terms": [],

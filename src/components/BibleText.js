@@ -5,10 +5,7 @@ import WholeWord from 'components/BibleText/WholeWord'
 class BibleText extends React.Component {
 	constructor(props) {
 		super(props)
-		var settings = JSON.parse(localStorage.getItem("qbibleSettings")) || {
-			font_size: "small",
-			font_family: "SBL Biblit"
-		}
+		var settings = JSON.parse(localStorage.getItem("qbibleSettings")) || {}
 		this.state = {
 			data: [],
 			active_wid: -1,
@@ -53,10 +50,12 @@ class BibleText extends React.Component {
 	}
 	render() {
 		var fontsizes = { "small": "130%", "medium": "200%", "large": "270%" }
-		var biblestyles = {
-			"fontSize": fontsizes[this.state.display_setting.font_size],
-			"fontFamily": this.state.display_setting.font_family
-		}
+		var biblestyles = {}
+		if (this.state.display_setting.hasOwnProperty("font_size"))
+			biblestyles["fontSize"] = fontsizes[this.state.display_setting.font_size]
+		if (this.state.display_setting.hasOwnProperty("font_family"))
+			biblestyles["fontFamily"] = this.state.display_setting.font_family
+		
 		var lastVerse = 0
 		var words = this.state.data.reduce((previousValue, currentValue, i) => {
 			// intersperse words with verse references
