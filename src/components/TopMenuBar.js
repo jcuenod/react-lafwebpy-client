@@ -16,15 +16,18 @@ let builtin_filters = {
 class TopMenuBar extends React.Component {
 	constructor(props) {
 		super(props)
+		var settings = JSON.parse(localStorage.getItem("qbibleSettings")) || {
+			search_range: "clause",
+			search_type: "normal",
+			search_filter: "none",
+			font_size: "medium",
+			font_family: "Ezra SIL"
+		}
 		this.state = {
-			terms: [],
-			search_in_progress: false,
-			reference: {},
-			settings: {
-				search_range: "clause",
-				search_type: "normal",
-				search_filter: "none"
-			}
+			"terms": [],
+			"search_in_progress": false,
+			"reference": {},
+			"settings": settings,
 		}
 	}
 	componentDidMount() {
@@ -51,6 +54,7 @@ class TopMenuBar extends React.Component {
 				var new_state = Object.assign({}, this.state.settings)
 				new_state[payload.setting_type] = payload.value
 				this.setState({"settings": new_state})
+				localStorage.setItem("qbibleSettings", JSON.stringify(new_state))
 			}
 		}, {
 			eventType: "navigation_request",
