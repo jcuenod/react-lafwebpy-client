@@ -6,32 +6,45 @@ import 'react-table/react-table.css'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 
-import term_to_english from 'data/MorphCodes'
+import {term_to_english} from 'data/MorphCodes'
 
 class WordStudyResults extends React.Component {
 	constructor(props) {
 		super(props)
 		var possibleVisible = this.props.data.search_results.columns.map(x => x["accessor"])
 		var visibleDefault = [
-			{ "value": "lex", "label": "lex"},
-			{ "value": "tricons", "label": "tricons"},
-			{ "value": "sdbh", "label": "sdbh"},
-			{ "value": "lxxlexeme", "label": "lxxlexeme"},
-			{ "value": "vs", "label": "vs"},
-			{ "value": "vt", "label": "vt"},
-			{ "value": "book", "label": "book"},
-			{ "value": "ch", "label": "ch"},
-			{ "value": "v", "label": "v"},
-		].filter(x => possibleVisible.includes(x["value"]))
+			{ "value": "lex" },
+			{ "value": "tricons" },
+			{ "value": "sdbh" },
+			{ "value": "lxxlexeme" },
+			{ "value": "vs" },
+			{ "value": "vt" },
+			{ "value": "book" },
+			{ "value": "ch" },
+			{ "value": "v" },
+		].map((x) => ({
+			"value": x["value"],
+			"label": term_to_english["categories"].hasOwnProperty(x["value"]) ?
+					term_to_english["categories"][x["value"]] :
+					x["value"]
+		})).filter(x => possibleVisible.includes(x["value"]))
 		this.state = {
 			visibleColumns: visibleDefault,
 			pivotColumns: [],
 		}
 	}
 	render() {
-		var select_options = this.props.data.search_results.columns.map((x) => ({ "value": x["accessor"], "label": x["header"]}))
+		var select_options = this.props.data.search_results.columns.map((x) => ({
+			"value": x["accessor"],
+			"label": term_to_english["categories"].hasOwnProperty(x["header"]) ?
+					term_to_english["categories"][x["header"]] :
+					x["header"]
+		}))
 		var cols = this.state.visibleColumns.map((c) => {
 			var column_data = this.props.data.search_results.columns.find((x) => x["accessor"] === c["value"])
+			column_data["header"] = term_to_english["categories"].hasOwnProperty(column_data["header"]) ?
+					term_to_english["categories"][column_data["header"]] :
+					column_data["header"]
 			column_data["minWidth"] = undefined
 			return column_data
 		})

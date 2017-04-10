@@ -25,6 +25,9 @@ const term_to_english = {
 		"gloss": "Gloss",
 		"rootregex": "Root Regex",
 		"invert": "Invert (search helper)",
+		"book": "Book",
+		"ch": "Chapter",
+		"v": "Verse",
 	},
 	"is_definite": {
 		"det": "Yes",
