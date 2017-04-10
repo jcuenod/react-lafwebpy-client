@@ -281,6 +281,8 @@ body:after {
 	font-size: 16px;
 	overflow: auto;
 	bottom: 0;
+	background: url("/images/logo.png") center bottom no-repeat;
+	margin-bottom: 3vh;
 }
 
 .morph_displayer table {
