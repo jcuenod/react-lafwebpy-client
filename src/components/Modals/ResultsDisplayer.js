@@ -98,7 +98,7 @@ class ResultsDisplayer extends React.Component {
 			<Modal isVisible={this.state.show !== "none"}
 				onClickHandler={() => console.log('this.setState({"show": "none"})')}>
 				{resultElement}
-				<div className="close_button" onClick={this.hideModal}></div>
+				<div className="close_button" onClick={() => this.hideModal()}></div>
 			</Modal>
 		)
 	}
