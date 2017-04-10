@@ -545,3 +545,25 @@ body:after {
 .term_under_construction:hover {
 	background-color: #7c7;
 }
+
+
+.helpSlider {
+	 width: 80%;
+	 margin: auto;
+}
+.slick-prev:before, .slick-next:before {
+	color: #aaa !important;
+}
+.helpSlider p {
+	font-size: 140%;
+	padding: 0 20%;
+	text-align: left;
+}
+.helpSlider .information {
+	max-height: 480px; /* the height of the youtube video on the other slide*/
+	overflow: auto;
+}
+.helpSlider .slickslide {
+	background: rgba(220, 220, 220, 0.3);
+	border-radius: 5px;
+}
