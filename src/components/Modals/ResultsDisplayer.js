@@ -72,6 +72,14 @@ class ResultsDisplayer extends React.Component {
 			}
 		})
 	}
+	hideModal() {
+		this.setState({"show": "none"})
+		ga('send', {
+			hitType: 'event',
+			eventCategory: 'search',
+			eventAction: 'hide-search'
+		})
+	}
 	render() {
 		var resultElement = ""
 		switch (this.state.show) {
@@ -90,7 +98,7 @@ class ResultsDisplayer extends React.Component {
 			<Modal isVisible={this.state.show !== "none"}
 				onClickHandler={() => console.log('this.setState({"show": "none"})')}>
 				{resultElement}
-				<div className="close_button" onClick={() => this.setState({"show": "none"})}></div>
+				<div className="close_button" onClick={this.hideModal}></div>
 			</Modal>
 		)
 	}
