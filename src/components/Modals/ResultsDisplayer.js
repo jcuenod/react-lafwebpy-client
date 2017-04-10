@@ -76,13 +76,11 @@ class ResultsDisplayer extends React.Component {
 		}
 
 		return (
-			<div>
-				<Modal isVisible={this.state.show !== "none"}
-					onClickHandler={() => console.log('this.setState({"show": "none"})')}>
-					{resultElement}
-					<div className="close_button" onClick={() => this.setState({"show": "none"})}>close</div>
-				</Modal>
-			</div>
+			<Modal isVisible={this.state.show !== "none"}
+				onClickHandler={() => console.log('this.setState({"show": "none"})')}>
+				{resultElement}
+				<div className="close_button" onClick={() => this.setState({"show": "none"})}></div>
+			</Modal>
 		)
 	}
 }
