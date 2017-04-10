@@ -10,6 +10,11 @@ module.exports = {
 	},
 
 	devtool: 'inline-source-map',
+	devServer: {
+		historyApiFallback: true,
+	},
+
+	historyApiFallback: true,
 
 	module: {
 		loaders: [
@@ -23,6 +28,9 @@ module.exports = {
 			}, {
 				test: /\.css$/,
 				loader: "style!css"
+			}, {
+				test: /\.(gif|png|woff|woff2|eot|ttf|svg)$/,
+				loader: 'url-loader?limit=100000'
 			}
 		]
 	},
