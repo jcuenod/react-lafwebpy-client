@@ -56,8 +56,14 @@ class MorphDisplay extends React.Component {
 				keyB = category_weights.hasOwnProperty(b.k) ? category_weights[b.k] : 0
 			return keyA < keyB ? -1 : ((keyA > keyB) ? 1 : 0)
 		})
+		var newHere = this.state.data.length > 0 ? "" : (<div>
+			<span href="#" className="newhere" onClick={() => EventPropagator.fireEvent({
+				"eventType": "show_help",
+				"payload": {"slide": "help"}
+			})}></span>
+		</div>)
 		return (
-			<div className="morph_displayer">
+			<div className="morph_displayer">{newHere}
 				<table>
 					<tbody>
 						{morph_data.map((morph, i) => {

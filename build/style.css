@@ -570,6 +570,21 @@ body:after {
 	background-color: #7c7;
 }
 
+.newhere {
+	background: url('/images/newq.svg') no-repeat;
+    background-size: contain;
+	top: 2vw;
+	left: 2vw;
+	right: 2vw;
+	bottom: 2vw;
+	position: absolute;
+	opacity: 0.6;
+	cursor: pointer;
+	transition: opacity 300ms ease;
+}
+.newhere:hover {
+	opacity: 1;
+}
 
 .helpSlider {
 	 width: 80%;
