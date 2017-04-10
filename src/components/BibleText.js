@@ -35,6 +35,11 @@ class BibleText extends React.Component {
 			eventType: "word_clicked",
 			callback: (payload) => {
 				this.setState({"active_wid": payload.wid})
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'bibletext',
+					eventAction: 'word-clicked'
+				})
 			}
 		}, {
 			eventType: "update_settings",
