@@ -33,6 +33,12 @@ class HelpDisplayer extends React.Component {
 							break;
 					}
 				}
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'subpage',
+					eventAction: 'show_help',
+					eventLabel: payload.slide
+				})
 			}
 		})
 	}

@@ -40,6 +40,11 @@ class TopMenuBar extends React.Component {
 				term_to_push.uid = new Date().valueOf()
 				new_terms.push(term_to_push)
 				this.setState({"terms": new_terms})
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'topmenubar',
+					eventAction: 'added-search-term'
+				})
 			}
 		}, {
 			eventType: "remove_search_term",
@@ -48,6 +53,11 @@ class TopMenuBar extends React.Component {
 				var index_to_remove = new_terms.map((o) => o.uid).indexOf(payload.search_term.uid)
 				new_terms.splice(index_to_remove, 1)
 				this.setState({"terms": new_terms})
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'topmenubar',
+					eventAction: 'removed-search-term'
+				})
 			}
 		}, {
 			eventType: "update_settings",
@@ -56,6 +66,11 @@ class TopMenuBar extends React.Component {
 				new_state[payload.setting_type] = payload.value
 				this.setState({"settings": new_state})
 				localStorage.setItem("qbibleSettings", JSON.stringify(new_state))
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'topmenubar',
+					eventAction: 'updated-settings'
+				})
 			}
 		}, {
 			eventType: "navigation_request",

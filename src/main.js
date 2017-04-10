@@ -24,6 +24,8 @@ class App extends React.Component {
 				var ref_string = "/" + payload.reference.book + "/" + payload.reference.chapter
 				localStorage.setItem("reference", ref_string)
 				browserHistory.push(ref_string)
+				ga('set', 'page', ref_string)
+				ga('send', 'pageview')
 			}
 		}, {
 			eventType: "remove_search_term",

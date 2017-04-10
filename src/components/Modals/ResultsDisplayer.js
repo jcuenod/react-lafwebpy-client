@@ -51,11 +51,22 @@ class ResultsDisplayer extends React.Component {
 						eventType: "do_search_done",
 						payload: null
 					})
+					ga('send', {
+						hitType: 'event',
+						eventCategory: 'search',
+						eventAction: 'do-search',
+						eventValue: data.length > 0
+					})
 				}).fail((msg) => {
 					alert("Hmm, something went wrong with that search. Sorry about that...")
 					EventPropagator.fireEvent({
 						eventType: "do_search_done",
 						payload: null
+					})
+					ga('send', {
+						hitType: 'event',
+						eventCategory: 'search',
+						eventAction: 'failed-search'
 					})
 				})
 			}
