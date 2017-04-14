@@ -10,6 +10,8 @@ import MorphDisplay from 'components/MorphDisplay'
 import TermConstructor from 'components/TermConstructor'
 import ModalDisplayer from 'components/ModalDisplayer'
 
+window.root_url = "http://qbible.tk"
+
 class App extends React.Component {
 	constructor() {
 		super()

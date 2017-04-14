@@ -18,7 +18,7 @@ class BibleText extends React.Component {
 			callback: (payload) => {
 				var ref = payload.reference
 				ref["book"] = ref["book"].replace(/\ /g, "_")
-				$.post("/api/book_chapter", JSON.stringify(ref), (result) => {
+				$.post(window.root_url + "/api/book_chapter", JSON.stringify(ref), (result) => {
 					this.setState({data: result.chapter_data})
 					var newRef = result.reference
 					newRef["book"] = newRef["book"].replace(/\_/g, " ")

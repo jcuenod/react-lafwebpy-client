@@ -22,9 +22,9 @@ class ResultsDisplayer extends React.Component {
 			eventType: "do_search",
 			callback: (payload) => {
 				var search_urls = {
-					"normal": "/api/search",
-					"collocation": "/api/collocations",
-					"word study": "/api/word_study",
+					"normal": window.root_url + "/api/search",
+					"collocation": window.root_url + "/api/collocations",
+					"word study": window.root_url + "/api/word_study",
 				}
 				var states = {
 					"normal": "normalResults",
