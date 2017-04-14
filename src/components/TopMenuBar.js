@@ -17,14 +17,14 @@ let builtin_filters = {
 class TopMenuBar extends React.Component {
 	constructor(props) {
 		super(props)
-		var settings = JSON.parse(localStorage.getItem("qbibleSettings")) || {
-			search_range: "clause",
-			search_type: "normal",
-			search_filter: "none",
-			font_size: "",
-			font_family: "",
-			highlight_terms: false
-		}
+		var settings = JSON.parse(localStorage.getItem("qbibleSettings"))
+		settings["search_range"] |= "clause"
+		settings["search_type"] |= "normal"
+		settings["search_filter"] |= "none"
+		settings["font_size"] |= ""
+		settings["font_family"] |= ""
+		settings["highlight_terms"] |= false
+
 		this.state = {
 			"terms": [],
 			"search_in_progress": false,

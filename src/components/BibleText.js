@@ -64,9 +64,11 @@ class BibleText extends React.Component {
 			eventType: "update_settings",
 			callback: (payload) => {
 				if (["font_size", "font_family"].includes(payload.setting_type))
-				var newState = this.state.display_setting
-				newState[payload.setting_type] = payload.value
-				this.setState({"display_setting": newState})
+				{
+					var newState = this.state.display_setting
+					newState[payload.setting_type] = payload.value
+					this.setState({"display_setting": newState})
+				}
 			}
 		}])
 	}
