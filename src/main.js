@@ -65,10 +65,10 @@ class App extends React.Component {
 			<div>
 				<SearchBuilder />
 				<BibleText />
-				<div style={this.state.construction_mode ? {display: "none"} : {}}>
+				<div className='sidebar' style={this.state.construction_mode ? {display: "none"} : {}}>
 					<MorphDisplay />
 				</div>
-				<div style={this.state.construction_mode ? {} : {display: "none"}}>
+				<div className='sidebar' style={this.state.construction_mode ? {} : {display: "none"}}>
 					<TermConstructor />
 				</div>
 				<ModalDisplayer />
