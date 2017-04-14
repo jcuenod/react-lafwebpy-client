@@ -13,24 +13,25 @@ body:after {
 .bible_text_container {
 	position: absolute;
 	top: 0;
-	left: 0;
 	bottom: 0;
 	right: 0;
 	overflow: auto;
+	max-width: calc(100vw - 250px);
+	width: calc(850px + (100vw - 1100px) / 2);
+	background-color: #fffffa;
+	box-shadow: 0 0 10px #ddd;
 }
 .bible_text {
 	position: absolute;
 	top: 0;
-	left: calc(50% + (1100px/2 - 825px));
-	width: 830px;
+	left: 0;
+	width: 100%;
 	padding: 15vh 3vw;
-	background-color: #fffffa;
 	font-size: 33px;
 	font-family: "Ezra SIL", "SBL Hebrew", "SBL Biblit";
 	line-height: 150%;
 	color: #111;
 	min-height: 100%;
-	box-shadow: 0 0 10px #ddd;
 	direction: rtl;
 }
 .bible_text.is_loading:after {
@@ -268,11 +269,19 @@ body:after {
 
 
 
-
+.sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  min-width: 250px;
+  width: calc(250px + (100vw - 1100px) / 2);
+}
 .morph_displayer {
-	position: fixed;
-	left: calc(50% - (1165px/2));
+	position: absolute;
+	right: 0;
 	width: 300px;
+	max-width: 100%;
 	/*left: calc(50% - (1100px/2));
 	width: 270px;*/
 	top: 15vh;
