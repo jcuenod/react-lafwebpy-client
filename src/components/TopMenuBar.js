@@ -22,7 +22,8 @@ class TopMenuBar extends React.Component {
 			search_type: "normal",
 			search_filter: "none",
 			font_size: "",
-			font_family: ""
+			font_family: "",
+			highlight_terms: false
 		}
 		this.state = {
 			"terms": [],
@@ -91,6 +92,16 @@ class TopMenuBar extends React.Component {
 			eventType: "do_search_done",
 			callback: () => {
 				this.setState({search_in_progress: false})
+			}
+		}, {
+			eventType: "get_settings",
+			callback: (payload) => {
+				payload.callback(this.state.settings)
+			}
+		}, {
+			eventType: "get_terms",
+			callback: (payload) => {
+				payload.callback(this.state.terms)
 			}
 		}])
 	}

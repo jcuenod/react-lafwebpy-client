@@ -3,7 +3,8 @@ import EventPropagator from 'events/EventPropagator'
 
 const WordBit = ({wordbit, active_wid}) => (
 	<span>
-		<span className={active_wid === wordbit.wid ? "word_bit active" : "word_bit"}
+		<span className={wordbit.highlights.concat('word_bit').join(' ') +
+									(active_wid === wordbit.wid ? " active" : "")}
 			onClick={() => EventPropagator.fireEvent({
 				eventType: "word_clicked",
 				payload: {wid: wordbit.wid}})

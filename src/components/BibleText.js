@@ -18,6 +18,28 @@ class BibleText extends React.Component {
 			callback: (payload) => {
 				var ref = payload.reference
 				ref["book"] = ref["book"].replace(/\ /g, "_")
+
+				// Find out if highlighting is on
+				var settings = {}
+				EventPropagator.fireEvent({'eventType': 'get_settings', 'payload': {'callback': (stobj) => {
+					settings = stobj
+				}}})
+				var highlightobj = {}
+				if (settings.highlight_terms)
+				{
+					// If highlighting is on, then get the queries to highlight and create the terms
+					var rawQueries = []
+					EventPropagator.fireEvent({'eventType': 'get_terms', 'payload': {'callback': (sterms) => {
+						rawQueries = sterms
+					}}})
+					var counter = 0
+					rawQueries.forEach((q) => {
+						delete q["uid"]
+						highlightobj['highlight' + counter++] = q
+					})
+					ref["highlights"] = highlightobj
+				}
+
 				$.post(window.root_url + "/api/book_chapter", JSON.stringify(ref), (result) => {
 					this.setState({data: result.chapter_data})
 					var newRef = result.reference
@@ -55,7 +77,7 @@ class BibleText extends React.Component {
 			biblestyles["fontSize"] = fontsizes[this.state.display_setting.font_size]
 		if (this.state.display_setting.hasOwnProperty("font_family"))
 			biblestyles["fontFamily"] = this.state.display_setting.font_family
-		
+
 		var lastVerse = 0
 		var words = this.state.data.reduce((previousValue, currentValue, i) => {
 			// intersperse words with verse references

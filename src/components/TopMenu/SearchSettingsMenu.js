@@ -1,4 +1,5 @@
 import React from 'react'
+import EventPropagator from 'events/EventPropagator'
 
 import SettingsListItem from './SettingsListItem'
 
@@ -45,6 +46,14 @@ class SearchSettingsMenu extends React.Component {
 							setting_type="search_filter" />
 					)
 				}, this)}
+				<li className="heading">highlight</li>
+				<li className="menu_item_button" onClick={() => EventPropagator.fireEvent({
+						eventType: "update_settings",
+						payload: {
+							setting_type: 'highlight_terms',
+							value: !this.props.settings.highlight_terms
+						}
+					})}>{this.props.settings.highlight_terms ? "✔" : "✘"} highlight terms</li>
 			</ul>
 		)
 	}
