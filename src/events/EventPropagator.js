@@ -32,12 +32,16 @@ let EventPropagator = {
 			this.listeners.push(listenerObject)
 	},
 	fireEvent(eventObject){
+		// this.listeners.forEach((l) => {
+		// 	console.log(l.eventType, "==", eventObject.eventType, "?", l.eventType === eventObject.eventType)
+		// })
 		let listenerList = this.listeners.filter((listener) => listener.eventType === eventObject.eventType)
 		listenerList.forEach((listener) => {
 			listener.callback(eventObject.payload)
 		})
 		if (listenerList.length === 0) {
-			console.warn("No listeners are registered for eventObject:", eventObject)
+			console.warn("Error with:", eventObject)
+			console.warn("No listeners are registered for eventObject:", eventObject.eventType)
 		} else {
 			console.info("Event (", eventObject.eventType, ") fired to listeners:", listenerList.length)
 		}
