@@ -30,8 +30,6 @@ class TermConstructor extends React.Component {
 			previousValue[currentValue.k] = currentValue.v
 			return previousValue
 		}, {})
-		console.log(this.state.data)
-		console.log(search_term)
 
 		EventPropagator.fireEvent({
 			eventType: "add_search_term",

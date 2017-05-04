@@ -27,7 +27,7 @@ const OTBookDetails = [
 	{"name": "Ezekiel", "chapters": 48, "abbreviation": "Ezek"},
 	{"name": "Daniel", "chapters": 12, "abbreviation": "Dan"},
 	{"name": "Hosea", "chapters": 14, "abbreviation": "Hos"},
-	{"name": "Joel", "chapters": 3, "abbreviation": "Joel"},
+	{"name": "Joel", "chapters": 4, "abbreviation": "Joel"},
 	{"name": "Amos", "chapters": 9, "abbreviation": "Amos"},
 	{"name": "Obadiah", "chapters": 1, "abbreviation": "Obad"},
 	{"name": "Jonah", "chapters": 4, "abbreviation": "Jonah"},
@@ -37,6 +37,6 @@ const OTBookDetails = [
 	{"name": "Zephaniah", "chapters": 3, "abbreviation": "Zeph"},
 	{"name": "Haggai", "chapters": 2, "abbreviation": "Hag"},
 	{"name": "Zechariah", "chapters": 14, "abbreviation": "Zech"},
-	{"name": "Malachi", "chapters": 4, "abbreviation": "Mal"}
+	{"name": "Malachi", "chapters": 3, "abbreviation": "Mal"}
 ]
 export default OTBookDetails
