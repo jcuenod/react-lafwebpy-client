@@ -3,6 +3,7 @@ import {render} from 'react-dom'
 
 import ResultsDisplayer from './Modals/ResultsDisplayer'
 import NavigationDisplayer from './Modals/NavigationDisplayer'
+import SettingsModal from './Modals/SettingsModal'
 import HelpDisplayer from './Modals/HelpDisplayer'
 
 class ModalDisplayer extends React.Component {
@@ -11,6 +12,7 @@ class ModalDisplayer extends React.Component {
 			<div>
 				<ResultsDisplayer />
 				<NavigationDisplayer />
+				<SettingsModal />
 				<HelpDisplayer />
 			</div>
 		)
