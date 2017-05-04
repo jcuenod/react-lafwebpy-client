@@ -48,6 +48,11 @@ class BibleText extends React.Component {
 						eventType: "navigation_complete",
 						payload: { reference: newRef }
 					})
+					ga('send', {
+						hitType: 'event',
+						eventCategory: 'bibletext',
+						eventAction: 'navigation'
+					})
 				})
 			}
 		}, {
