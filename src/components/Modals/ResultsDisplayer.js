@@ -38,7 +38,7 @@ class ResultsDisplayer extends React.Component {
 					url: search_urls[payload.search_type],
 					data: JSON.stringify(payload.query_data)
 				}).done((data) => {
-					if (data.length === 0)
+					if (data.search_results.length === 0)
 					{
 						toast('Your search did not yield any results', {
 							type: toast.TYPE.INFO

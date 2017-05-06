@@ -13,7 +13,7 @@ import ModalDisplayer from 'components/ModalDisplayer'
 
 import 'react-toastify/dist/ReactToastify.min.css'
 
-window.root_url = ""
+window.root_url = "http://qbible.tk"
 
 class App extends React.Component {
 	constructor() {
