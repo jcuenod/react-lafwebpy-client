@@ -11,7 +11,7 @@ import {term_to_english} from 'data/MorphCodes'
 class WordStudyResults extends React.Component {
 	constructor(props) {
 		super(props)
-		var possibleVisible = this.props.data.search_results.columns.map(x => x["accessor"])
+		var possibleVisible = this.props.data.columns.map(x => x["accessor"])
 		var visibleDefault = [
 			{ "value": "lex" },
 			{ "value": "tricons" },
@@ -34,21 +34,21 @@ class WordStudyResults extends React.Component {
 		}
 	}
 	render() {
-		var select_options = this.props.data.search_results.columns.map((x) => ({
+		var select_options = this.props.data.columns.map((x) => ({
 			"value": x["accessor"],
 			"label": term_to_english["categories"].hasOwnProperty(x["header"]) ?
 					term_to_english["categories"][x["header"]] :
 					x["header"]
 		}))
 		var cols = this.state.visibleColumns.map((c) => {
-			var column_data = this.props.data.search_results.columns.find((x) => x["accessor"] === c["value"])
+			var column_data = this.props.data.columns.find((x) => x["accessor"] === c["value"])
 			column_data["header"] = term_to_english["categories"].hasOwnProperty(column_data["header"]) ?
 					term_to_english["categories"][column_data["header"]] :
 					column_data["header"]
 			column_data["minWidth"] = undefined
 			return column_data
 		})
-		var rows = this.props.data.search_results.rows
+		var rows = this.props.data.rows
 		return (
 			<div>
 				<h1>Word Study Results ({rows.length})</h1>

@@ -43,7 +43,7 @@ class ResultsDisplayer extends React.Component {
 					else
 					{
 						var newState = {}
-						newState[states[payload.search_type]] = data
+						newState[states[payload.search_type]] = data.search_results
 						this.setState(newState)
 						this.setState({"show": payload.search_type})
 					}
