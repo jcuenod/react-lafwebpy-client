@@ -1,6 +1,7 @@
 import React from 'react'
 import {render} from 'react-dom'
-import { Router, Route, browserHistory } from 'react-router'
+import {Router, Route, browserHistory} from 'react-router'
+import {ToastContainer} from 'react-toastify';
 
 import EventPropagator from 'events/EventPropagator'
 
@@ -10,7 +11,9 @@ import MorphDisplay from 'components/MorphDisplay'
 import TermConstructor from 'components/TermConstructor'
 import ModalDisplayer from 'components/ModalDisplayer'
 
-window.root_url = "http://qbible.tk"
+import 'react-toastify/dist/ReactToastify.min.css'
+
+window.root_url = ""
 
 class App extends React.Component {
 	constructor() {
@@ -74,6 +77,7 @@ class App extends React.Component {
 					<TermConstructor />
 				</div>
 				<ModalDisplayer />
+				<ToastContainer autoClose={6000} position="top-center"/>
 			</div>
 		)
 	}

@@ -641,3 +641,17 @@ body:after {
 	background-color: #d44949;
 	z-index: -1;
 }
+
+.toastify {
+	z-index: 100 !important;
+	width: 70vw !important;
+}
+.toastify--top-center {
+	top: 2.5em !important;
+	left: 15vw !important;
+	margin-left: 0 !important;
+}
+.toastify__body {
+	text-align: center !important;
+	font-size: x-large !important;
+}

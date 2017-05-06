@@ -1,6 +1,8 @@
 import React from 'react'
 import {render} from 'react-dom'
 
+import {toast} from 'react-toastify';
+
 import Modal from './Modal'
 import SearchResults from './SearchResults'
 import CollocationResults from './CollocationResults'
@@ -38,7 +40,9 @@ class ResultsDisplayer extends React.Component {
 				}).done((data) => {
 					if (data.length === 0)
 					{
-						alert("Your search did not yield any results")
+						toast('Your search did not yield any results', {
+							type: toast.TYPE.INFO
+						});
 					}
 					else
 					{
@@ -46,6 +50,12 @@ class ResultsDisplayer extends React.Component {
 						newState[states[payload.search_type]] = data.search_results
 						this.setState(newState)
 						this.setState({"show": payload.search_type})
+						if (data.truncated)
+						{
+							toast('The search returned too many results, not all of them are being displayed.', {
+								type: toast.TYPE.INFO
+							});
+						}
 					}
 					EventPropagator.fireEvent({
 						eventType: "do_search_done",
@@ -58,7 +68,9 @@ class ResultsDisplayer extends React.Component {
 						eventValue: data.length > 0
 					})
 				}).fail((msg) => {
-					alert("Hmm, something went wrong with that search. Sorry about that...")
+					toast('Hmm, something went wrong with that search. Sorry about that...', {
+						type: toast.TYPE.ERROR
+					});
 					EventPropagator.fireEvent({
 						eventType: "do_search_done",
 						payload: null
