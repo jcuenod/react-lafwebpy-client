@@ -28,7 +28,7 @@ body:after {
 	width: 100%;
 	padding: 15vh 3vw;
 	font-size: 33px;
-	font-family: "Ezra SIL", "SBL Hebrew", "SBL Biblit";
+	font-family: "Ezra SIL", "SBL Hebrew", "SBL Biblit", "Cardo";
 	line-height: 150%;
 	color: #111;
 	min-height: 100%;
@@ -402,7 +402,7 @@ body:after {
 .results_table td.hebrew {
 	box-sizing: border-box;
 	text-align: right;
-	font-family: "Ezra SIL";
+	font-family: "Ezra SIL", "SBL Hebrew", "SBL Biblit", "Cardo";
 	font-size: 130%;
 	padding-bottom: 0.3em;
 	width: 47.5%;

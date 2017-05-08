@@ -16,8 +16,18 @@ class ResultsDisplayer extends React.Component {
 		this.state = {
 			normalResults: [],
 			collocationResults: [],
-			show: "none"
+			show: "none",
+			font: false
 		}
+		EventPropagator.registerListener({
+			eventType: "update_settings",
+			callback: (payload) => {
+				if (payload.setting_type == "font_family")
+				{
+					this.setState({"font": payload.value})
+				}
+			}
+		})
 	}
 	componentDidMount() {
 		EventPropagator.registerListener({
@@ -96,13 +106,13 @@ class ResultsDisplayer extends React.Component {
 		var resultElement = ""
 		switch (this.state.show) {
 			case "normal":
-				resultElement = <SearchResults data={this.state.normalResults} />
+				resultElement = <SearchResults data={this.state.normalResults} font={this.state.font} />
 				break;
 			case "collocation":
-				resultElement = <CollocationResults data={this.state.collocationResults} />
+				resultElement = <CollocationResults data={this.state.collocationResults} font={this.state.font} />
 				break;
 			case "word study":
-				resultElement = <WordStudyResults data={this.state.wordStudyResults} />
+				resultElement = <WordStudyResults data={this.state.wordStudyResults} font={this.state.font} />
 				break;
 		}
 

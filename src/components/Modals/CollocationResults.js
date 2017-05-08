@@ -11,12 +11,12 @@ var format_references = (references) =>  {
 	}).join("; ")
 }
 
-const CollocationResults = ({data}) => (
+const CollocationResults = ({data, font}) => (
 	<TabulatedResults title={data.length + " collocations"}>
 		{data.map((row, i) => {
 			return (
 				<tr key={i}>
-					<td className="hebrew">{row.lexeme}</td>
+					<td className="hebrew" style={{ "fontFamily": font }}>{row.lexeme}</td>
 					<td className="large_number">{row.count}</td>
 					<td className="reference_list">{format_references(row.references)}</td>
 				</tr>
