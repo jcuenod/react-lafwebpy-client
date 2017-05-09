@@ -26,7 +26,7 @@ body:after {
 	top: 0;
 	left: 0;
 	width: 100%;
-	padding: 15vh 3vw;
+	padding: 10vh 3vw 15vh 3vw;
 	font-size: 33px;
 	font-family: "Ezra SIL", "SBL Hebrew", "SBL Biblit", "Cardo";
 	line-height: 150%;
