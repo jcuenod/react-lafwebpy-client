@@ -45,8 +45,8 @@ body:after {
 	background-position: center;
 	content: "";
 }
-.clause_atom_view {
-	display: block;
+.clause_atom_type {
+	font-size: 40%;
 }
 .whole_word {
 	display: inline-block;
