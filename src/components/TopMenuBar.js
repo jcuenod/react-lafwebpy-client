@@ -30,6 +30,8 @@ class TopMenuBar extends React.Component {
 			settings["font_family"] = ""
 		if (!settings.hasOwnProperty("highlight_terms"))
 			settings["highlight_terms"] = false
+		if (!settings.hasOwnProperty("display_by"))
+			settings["display_by"] = "verse"
 
 		this.state = {
 			"terms": [],
