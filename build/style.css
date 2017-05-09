@@ -45,8 +45,26 @@ body:after {
 	background-position: center;
 	content: "";
 }
+.clause_atom_holder {
+	display: table;
+	border-collapse: collapse;
+}
+.clause_atom_view {
+	display: table-row;
+	border-bottom: 1px dotted #aaa;
+}
+.clause_atom_view:last-child {
+	border: none;
+}
+.clause_atom_view > span {
+	display: table-cell;
+	vertical-align: middle;
+}
 .clause_atom_type {
 	font-size: 40%;
+}
+.clause_atom {
+	display: inline-block;
 }
 .whole_word {
 	display: inline-block;

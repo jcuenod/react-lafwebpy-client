@@ -100,11 +100,11 @@ class BibleText extends React.Component {
 			))
 		}
 		else if (d.display_by == "clause") {
-			toDisplay = <table>
+			toDisplay = <div className="clause_atom_holder">
 				{d.chapter_data.map((clause, i) => (
 					<ClauseAtomView key={i} data={clause} active_wid={this.state.active_wid}></ClauseAtomView>
 				))}
-			</table>
+			</div>
 		}
 		else {
 			console.log(d)
