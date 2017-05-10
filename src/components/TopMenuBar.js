@@ -1,4 +1,6 @@
 import React from 'react'
+import {toast} from 'react-toastify';
+
 import EventPropagator from 'events/EventPropagator'
 
 import SearchSettings from 'components/TopMenu/SearchSettings'
@@ -48,8 +50,16 @@ class TopMenuBar extends React.Component {
 		EventPropagator.registerListener([{
 			eventType: "add_search_term",
 			callback: (payload) => {
-				var new_terms = this.state.terms.slice()
 				var term_to_push = payload.term
+				if (Object.keys(term_to_push).length === 0)
+				{
+					toast('You can\'t add an empty search term. Select attributes to build one up.', {
+						type: toast.TYPE.INFO
+					});
+					return
+				}
+
+				var new_terms = this.state.terms.slice()
 				term_to_push.uid = new Date().valueOf()
 				new_terms.push(term_to_push)
 				this.setState({"terms": new_terms})

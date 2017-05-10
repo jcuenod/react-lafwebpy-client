@@ -1,4 +1,5 @@
 import React from 'react'
+import {toast} from 'react-toastify';
 import EventPropagator from 'events/EventPropagator'
 import { term_to_english, category_weights } from 'data/MorphCodes'
 
@@ -38,6 +39,19 @@ class MorphDisplay extends React.Component {
 			return m
 		})
 		this.setState(new_morph_state)
+
+		var default_attr_to_add = "lex"
+		if (Object.keys(search_term).length === 0)
+		{
+			var lex_attr = this.state.data.find((attr) => attr.k == default_attr_to_add)
+			if (lex_attr)
+			{
+				search_term[default_attr_to_add] = lex_attr.v
+				toast('We have automatically added ' + term_to_english["categories"][default_attr_to_add] + '. You can choose attributes by clicking on them to construct custom search terms.', {
+					type: toast.TYPE.INFO
+				});
+			}
+		}
 		EventPropagator.fireEvent({
 			eventType: "add_search_term",
 			payload: {term: search_term}
