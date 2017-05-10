@@ -12,6 +12,7 @@ import TermConstructor from 'components/TermConstructor'
 import ModalDisplayer from 'components/ModalDisplayer'
 
 import 'react-toastify/dist/ReactToastify.min.css'
+import 'react-hint/css/index.css'
 
 window.root_url = "http://qbible.tk"
 

@@ -13,6 +13,10 @@ let builtin_filters = {
 	"minor prophets": ["Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi"],
 	// note the note above
 }
+let settings_that_cause_refresh = [
+	"display_by", "highlight_terms"
+]
+let waitingForUpdate = false
 
 class TopMenuBar extends React.Component {
 	constructor(props) {
@@ -30,6 +34,8 @@ class TopMenuBar extends React.Component {
 			settings["font_family"] = ""
 		if (!settings.hasOwnProperty("highlight_terms"))
 			settings["highlight_terms"] = false
+		if (!settings.hasOwnProperty("display_by"))
+			settings["display_by"] = "verse"
 
 		this.state = {
 			"terms": [],
@@ -78,6 +84,11 @@ class TopMenuBar extends React.Component {
 					eventCategory: 'topmenubar',
 					eventAction: 'updated-settings'
 				})
+				if (settings_that_cause_refresh.includes(payload.setting_type))
+				{
+					// Refresh navigation
+					waitingForUpdate = true
+				}
 			}
 		}, {
 			eventType: "navigation_request",
@@ -110,6 +121,19 @@ class TopMenuBar extends React.Component {
 				payload.callback(this.state.terms)
 			}
 		}])
+	}
+	componentDidUpdate(prevProps, prevState)
+	{
+		if (waitingForUpdate)
+		{
+			waitingForUpdate = false
+			EventPropagator.fireEvent({
+				eventType: "navigation_request",
+				payload: {
+					reference: this.state.reference
+				}
+			})
+		}
 	}
 	fireSearchEvent() {
 		if (this.state.terms.length === 0)

@@ -5,6 +5,7 @@ import SettingsListItem from './SettingsListItem'
 
 let font_size = ["small","medium","large"]
 let font_family = ["SBL Biblit","Ezra SIL"]
+let display_by = ["verse","clause"]
 
 class GeneralSettingsMenu extends React.Component {
 	render() {
@@ -28,6 +29,15 @@ class GeneralSettingsMenu extends React.Component {
 							isSelected={value == this.props.settings.font_family}
 							value={value}
 							setting_type="font_family" />
+					)
+				}, this)}
+				<li className="heading">display type</li>
+				{display_by.map((value, i) => {
+					return (
+						<SettingsListItem key={i}
+							isSelected={value == this.props.settings.display_by}
+							value={value}
+							setting_type="display_by" />
 					)
 				}, this)}
 				<li className="heading">qBible</li>
