@@ -3,7 +3,7 @@
 }
 body {
 	background-color: #fcfcfc;
-	font-family: "Carlito";
+	font-family: "Carlito", sans-serif;
 	overflow: hidden;
 }
 body:after {
@@ -62,6 +62,21 @@ body:after {
 }
 .clause_atom_type {
 	font-size: 40%;
+	padding: 0 15px;
+}
+.clause_atom_type > span {
+	font-family: "Carlito", sans-serif;
+	border-radius: 5px;
+	background: #bbb;
+	color: #fff;
+	text-align: center;
+	display: block;
+	line-height: 180%;
+	padding: 0 5px;
+	cursor: pointer;
+}
+.clause_atom_type > span:hover {
+	background-color: #888;
 }
 .clause_atom {
 	display: inline-block;
@@ -207,6 +222,7 @@ body:after {
 	border-top: 3px solid #88d;
 	border-bottom: 3px solid #88d;
 	border-radius: 3px;
+	user-select: none;
 }
 .settings_menu_dropdown:before {
 	position: absolute;
@@ -675,4 +691,16 @@ body:after {
 .toastify__body {
 	text-align: center !important;
 	font-size: x-large !important;
+}
+.react-hint__content {
+	background: rgba(136, 221, 136, 0.8) !important;
+    color: #020 !important;
+    font-size: small !important;
+    line-height: 100% !important;
+	pointer-events: none;
+	font-family: "Carlito", sans-serif;
+	font-weight: bold;
+}
+.react-hint--left:after {
+	border-left-color: rgba(136, 221, 136, 0.8) !important;
 }

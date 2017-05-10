@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactHint from 'react-hint'
 import EventPropagator from 'events/EventPropagator'
 import VerseView from 'components/BibleText/VerseView'
 import ClauseAtomView from 'components/BibleText/ClauseAtomView'
@@ -104,33 +105,13 @@ class BibleText extends React.Component {
 				{d.chapter_data.map((clause, i) => (
 					<ClauseAtomView key={i} data={clause} active_wid={this.state.active_wid}></ClauseAtomView>
 				))}
+				<ReactHint />
 			</div>
 		}
 		else {
 			console.log(d)
 			toDisplay = <div>We dont know what to do with this response.</div>
 		}
-		// var words = d.reduce((previousValue, currentValue, i) => {
-		// 	// intersperse words with verse references
-		// 	var toReturn = previousValue
-		// 	if (currentValue.verse !== lastVerse)
-		// 	{
-		// 		// the last element should be empty
-		// 		toReturn[toReturn.length-1].push({"wid": "verse", "verse": currentValue.verse})
-		// 		lastVerse = currentValue.verse
-		// 	}
-		// 	toReturn[toReturn.length-1].push(currentValue)
-		// 	if (currentValue.trailer.includes(" ") || currentValue.trailer.includes("\n"))
-		// 	{
-		// 		toReturn.push([])
-		// 	}
-		// 	return toReturn
-		// }, [[]]).filter((el) => el.length > 0)
-
-		//Was in the middle:
-		// {words.map((word, i) => {
-		// 	return <WholeWord key={i} word_bits={word} active_wid={this.state.active_wid} />
-		// }, this)}
 		return (
 			<div className="bible_text_container">
 				<div className="bible_text" style={biblestyles}>
