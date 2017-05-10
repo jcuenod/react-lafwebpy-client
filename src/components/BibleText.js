@@ -110,7 +110,7 @@ class BibleText extends React.Component {
 		}
 		else {
 			console.log(d)
-			toDisplay = <div>We dont know what to do with this response.</div>
+			toDisplay = ""
 		}
 		return (
 			<div className="bible_text_container">
