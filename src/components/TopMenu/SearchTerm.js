@@ -32,6 +32,8 @@ class SearchTerm extends React.Component {
 			lexeme = this.props.data.lex_utf8.replace(/[\/\[=]/g, "")
 		else if (props.includes("g_cons_utf8"))
 			lexeme = this.props.data.g_cons_utf8
+		else if (props.includes("voc_utf8"))
+			lexeme = this.props.data.voc_utf8
 		else if (props.includes("tricons"))
 			lexeme = this.props.data.tricons
 		else if (props.includes("lex"))
