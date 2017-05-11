@@ -60,6 +60,9 @@ body:after {
 	display: table-cell;
 	vertical-align: middle;
 }
+.clause_atom_view > span .verse_number {
+	padding-left: 0;
+}
 .clause_atom_type {
 	font-size: 40%;
 	padding: 0 15px;
@@ -103,7 +106,7 @@ body:after {
 	font-size: 35%;
 	display: inline-block;
 	vertical-align: top;
-	padding: 2px;
+	padding-left: 10px;
 	font-weight: bold;
 }
 
