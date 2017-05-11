@@ -68,6 +68,11 @@ class TopMenuBar extends React.Component {
 					eventCategory: 'topmenubar',
 					eventAction: 'added-search-term'
 				})
+
+				if (this.state.settings.highlight_terms)
+				{
+					waitingForUpdate = true
+				}
 			}
 		}, {
 			eventType: "remove_search_term",
@@ -81,6 +86,11 @@ class TopMenuBar extends React.Component {
 					eventCategory: 'topmenubar',
 					eventAction: 'removed-search-term'
 				})
+
+				if (this.state.settings.highlight_terms)
+				{
+					waitingForUpdate = true
+				}
 			}
 		}, {
 			eventType: "update_settings",
